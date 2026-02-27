@@ -102,6 +102,13 @@ export async function POST(request: NextRequest) {
 
         // Write to Firestore
         const db = getAdminDb();
+        if (!db) {
+            console.error("[leads] Firebase Admin not configured — cannot save lead");
+            return NextResponse.json(
+                { error: "Lead storage is temporarily unavailable. Please contact us directly." },
+                { status: 503 }
+            );
+        }
         await db.collection("leads").add({
             ...sanitized,
             createdAt: FieldValue.serverTimestamp(),

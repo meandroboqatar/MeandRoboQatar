@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
 
     try {
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         const { searchParams } = new URL(request.url);
         const limit = Math.min(Number(searchParams.get("limit")) || 25, 100);
         const startAfter = searchParams.get("startAfter");
@@ -130,6 +131,7 @@ export async function PATCH(request: NextRequest) {
         }
 
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         await db.collection("leads").doc(id).update(updates);
 
         return NextResponse.json({ success: true });

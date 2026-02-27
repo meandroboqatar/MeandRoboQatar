@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
 
     try {
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         const snapshot = await db
             .collection("posts")
             .orderBy("createdAt", "desc")
@@ -66,6 +67,7 @@ export async function POST(request: NextRequest) {
         }
 
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
 
         // Check for duplicate slug
         const existing = await db

@@ -18,6 +18,7 @@ export async function GET(
 
     try {
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         const doc = await db.collection("posts").doc(params.id).get();
 
         if (!doc.exists) {
@@ -51,6 +52,7 @@ export async function PUT(
     try {
         const body = await request.json();
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         const docRef = db.collection("posts").doc(params.id);
 
         const doc = await docRef.get();
@@ -130,6 +132,7 @@ export async function DELETE(
 
     try {
         const db = getAdminDb();
+        if (!db) return NextResponse.json({ error: "Database unavailable" }, { status: 503 });
         const docRef = db.collection("posts").doc(params.id);
         const doc = await docRef.get();
 

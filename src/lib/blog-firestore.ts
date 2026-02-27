@@ -29,6 +29,7 @@ const staticPosts: BlogPost[] = _staticPosts.map(({ slug, title, excerpt, date, 
 export async function getPublishedPosts(): Promise<BlogPost[]> {
     try {
         const db = getAdminDb();
+        if (!db) return staticPosts;
         const snapshot = await db
             .collection("posts")
             .where("status", "==", "published")
@@ -71,6 +72,7 @@ export async function getPublishedPosts(): Promise<BlogPost[]> {
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     try {
         const db = getAdminDb();
+        if (!db) return staticPosts.find((p) => p.slug === slug) || null;
         const snapshot = await db
             .collection("posts")
             .where("slug", "==", slug)
@@ -112,6 +114,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function getAllPublishedSlugs(): Promise<string[]> {
     try {
         const db = getAdminDb();
+        if (!db) return staticPosts.map((p) => p.slug);
         const snapshot = await db
             .collection("posts")
             .where("status", "==", "published")

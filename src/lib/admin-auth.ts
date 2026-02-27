@@ -30,6 +30,12 @@ export async function verifyAdmin(
 
     try {
         const auth = getAdminAuth();
+        if (!auth) {
+            return new Response(JSON.stringify({ error: "Auth service unavailable" }), {
+                status: 503,
+                headers: { "Content-Type": "application/json" },
+            });
+        }
         const decoded = await auth.verifyIdToken(token);
 
         if (!decoded.admin) {
