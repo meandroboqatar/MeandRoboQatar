@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0df280;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="#0a0a0a"/>
+  <circle cx="200" cy="200" r="180" fill="url(#bg-glow)"/>
+  <!-- Robot head -->
+  <rect x="130" y="100" width="140" height="120" rx="20" fill="#1a1a1a" stroke="#0df280" stroke-width="2"/>
+  <!-- Eyes -->
+  <circle cx="170" cy="155" r="15" fill="#0df280"/>
+  <circle cx="230" cy="155" r="15" fill="#0df280"/>
+  <circle cx="170" cy="155" r="5" fill="#0a0a0a"/>
+  <circle cx="230" cy="155" r="5" fill="#0a0a0a"/>
+  <!-- Mouth -->
+  <rect x="165" y="185" width="70" height="8" rx="4" fill="#0df280" opacity="0.7"/>
+  <!-- Antenna -->
+  <line x1="200" y1="100" x2="200" y2="70" stroke="#0df280" stroke-width="3"/>
+  <circle cx="200" cy="65" r="8" fill="#0df280"/>
+  <!-- Body -->
+  <rect x="145" y="225" width="110" height="80" rx="15" fill="#1a1a1a" stroke="#0df280" stroke-width="2"/>
+  <!-- Arms -->
+  <rect x="100" y="235" width="40" height="15" rx="7" fill="#1a1a1a" stroke="#0df280" stroke-width="2"/>
+  <rect x="260" y="235" width="40" height="15" rx="7" fill="#1a1a1a" stroke="#0df280" stroke-width="2"/>
+  <!-- Chest icon -->
+  <circle cx="200" cy="265" r="12" fill="none" stroke="#0df280" stroke-width="2"/>
+  <circle cx="200" cy="265" r="5" fill="#0df280"/>
+</svg>

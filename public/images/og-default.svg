@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#141414"/>
+    </linearGradient>
+    <linearGradient id="green-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0df280"/>
+      <stop offset="100%" style="stop-color:#0bd96e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#0df280;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+  <!-- Subtle glow -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#green-grad)"/>
+  <!-- Logo area marker -->
+  <rect x="80" y="80" width="50" height="50" rx="10" fill="#0df280"/>
+  <text x="88" y="112" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0a0a0a">$</text>
+  <text x="145" y="100" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#1a6fc4">MeAnd</text>
+  <text x="145" y="116" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0df280">Robo</text>
+  <!-- Main title -->
+  <text x="80" y="260" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="white">AI-Powered Business</text>
+  <text x="80" y="330" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="white">Automation for</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="url(#green-grad)">SMEs in Qatar</text>
+  <!-- Subtitle -->
+  <text x="80" y="460" font-family="system-ui, sans-serif" font-size="22" fill="#a0a0a0">ERP &amp; PFP • AI Agents • Call Center • Creative Studio • Chatbots</text>
+  <!-- Bottom legal -->
+  <text x="80" y="570" font-family="system-ui, sans-serif" font-size="14" fill="#666">meandrobo.com.qa</text>
+  <!-- Robot silhouette (simplified) -->
+  <g opacity="0.06" transform="translate(900, 100)">
+    <rect x="50" y="40" width="140" height="120" rx="20" fill="#0df280"/>
+    <circle cx="100" cy="95" r="15" fill="#0df280"/>
+    <circle cx="160" cy="95" r="15" fill="#0df280"/>
+    <rect x="65" y="165" width="110" height="80" rx="15" fill="#0df280"/>
+    <line x1="120" y1="40" x2="120" y2="10" stroke="#0df280" stroke-width="6"/>
+    <circle cx="120" cy="5" r="8" fill="#0df280"/>
+  </g>
+</svg>

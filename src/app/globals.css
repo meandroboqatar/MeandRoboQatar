@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-green: #0cce6b;
+  --brand-green-hover: #0ab95f;
+  --brand-bg: #ffffff;
+  --brand-surface: #f7f7f8;
+  --brand-surface-light: #f0f0f2;
+  --brand-surface-border: #e5e7eb;
+  --brand-text: #0a0a0a;
+  --brand-muted: #5f6368;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(12, 206, 107, 0.2);
+  color: #0a0a0a;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f7f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-brand {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-brand bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-brand-green text-white font-semibold rounded-brand text-sm sm:text-base hover:bg-brand-green-hover transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-brand-surface-border text-brand-text font-semibold rounded-brand text-sm sm:text-base hover:border-brand-green hover:text-brand-green transition-all duration-300 active:scale-[0.98];
+  }
+
+  .card {
+    @apply bg-white border border-brand-surface-border rounded-brand p-6 shadow-card hover:shadow-card-hover hover:border-brand-green/40 transition-all duration-300;
+  }
+
+  .card-glow {
+    @apply card hover:shadow-lg;
+  }
+}
