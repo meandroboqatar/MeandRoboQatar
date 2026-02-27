@@ -1,8 +1,6 @@
 import { initializeApp, getApps, cert, App } from "firebase-admin/app";
 import { getFirestore, Firestore } from "firebase-admin/firestore";
 import { getAuth, Auth } from "firebase-admin/auth";
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
 
 let app: App | null = null;
 let appInitialized = false;
@@ -18,21 +16,22 @@ function getAdminApp(): App | null {
         return app;
     }
 
-    const filePath = join(process.cwd(), "service-account.json");
+    const projectId = process.env.FIREBASE_PROJECT_ID;
+    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
 
-    if (!existsSync(filePath)) {
+    if (!projectId || !clientEmail || !privateKey) {
         console.warn(
-            "[firebase-admin] service-account.json not found. Admin features disabled."
+            "[firebase-admin] Missing env vars (FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY). " +
+            "Admin features disabled."
         );
         return null;
     }
 
     try {
-        const serviceAccount = JSON.parse(readFileSync(filePath, "utf-8"));
-
         app = initializeApp({
-            credential: cert(serviceAccount),
-            projectId: serviceAccount.project_id || process.env.FIREBASE_PROJECT_ID,
+            credential: cert({ projectId, clientEmail, privateKey }),
+            projectId,
         });
         return app;
     } catch (err) {
