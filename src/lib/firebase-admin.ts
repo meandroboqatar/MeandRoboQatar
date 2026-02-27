@@ -1,6 +1,8 @@
 import { initializeApp, getApps, cert, App } from "firebase-admin/app";
 import { getFirestore, Firestore } from "firebase-admin/firestore";
 import { getAuth, Auth } from "firebase-admin/auth";
+import { existsSync, readFileSync } from "fs";
+import { join } from "path";
 
 let app: App | null = null;
 let appInitialized = false;
@@ -16,20 +18,17 @@ function getAdminApp(): App | null {
         return app;
     }
 
-    const b64 = process.env.FIREBASE_SERVICE_ACCOUNT_KEY_B64;
+    const filePath = join(process.cwd(), "service-account.json");
 
-    if (!b64) {
+    if (!existsSync(filePath)) {
         console.warn(
-            "[firebase-admin] FIREBASE_SERVICE_ACCOUNT_KEY_B64 is not set — Firebase Admin disabled. " +
-            "Firestore/Auth calls will return null."
+            "[firebase-admin] service-account.json not found. Admin features disabled."
         );
         return null;
     }
 
     try {
-        const serviceAccount = JSON.parse(
-            Buffer.from(b64, "base64").toString("utf-8")
-        );
+        const serviceAccount = JSON.parse(readFileSync(filePath, "utf-8"));
 
         app = initializeApp({
             credential: cert(serviceAccount),
