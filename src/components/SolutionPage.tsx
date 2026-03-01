@@ -57,6 +57,20 @@ export function SolutionPage({ slug }: SolutionPageProps) {
         })),
     };
 
+    const getAnimationVariant = (s: string) => {
+        const variants: Record<string, string> = {
+            "erp-pfp-qatar": "animate-float-data",
+            "ai-website-chatbot-qatar": "animate-float-chat",
+            "ai-customer-agent-qatar": "animate-pulse-notify",
+            "ai-social-media-manager-qatar": "animate-slide-cards",
+            "ai-creative-studio-qatar": "animate-sparkle",
+            "ai-call-center-agent-qatar": "animate-soundwave",
+            "web-development-qatar": "animate-code-brackets",
+            "ai-business-plan-generator-qatar": "animate-document-flip",
+        };
+        return variants[s] || "animate-float-complex";
+    };
+
     return (
         <>
             <JsonLd data={serviceSchema} />
@@ -65,7 +79,8 @@ export function SolutionPage({ slug }: SolutionPageProps) {
             <Hero
                 title={data.hero.title}
                 subtitle={data.hero.subtitle}
-                showRobot={false}
+                showRobot={true}
+                animationVariant={getAnimationVariant(slug)}
             />
 
             {/* Direct Answer */}
@@ -188,7 +203,12 @@ export function SolutionPage({ slug }: SolutionPageProps) {
                 </div>
             </Section>
 
-            <CTABanner />
+            <CTABanner
+                title="Ready to transform your business?"
+                description="Book a free consultation with our team or talk to us directly to get started."
+                primaryCta={{ text: "Book Free Consultation", href: "/contact" }}
+                secondaryCta={{ text: "Talk to us on WhatsApp", href: "https://wa.me/97433898251" }} // Note: Use your actual WhatsApp URL if defined globally
+            />
 
             {/* Lead Form */}
             <Section variant="surface" id="contact">

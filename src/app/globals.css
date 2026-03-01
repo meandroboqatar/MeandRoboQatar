@@ -57,7 +57,16 @@ body {
 /* Focus styles for accessibility */
 :focus-visible {
   outline: 2px solid var(--brand-green);
-  outline-offset: 2px;
+  outline-offset: 4px;
+}
+
+/* Premium Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight font-extrabold;
+}
+
+p {
+  @apply leading-relaxed;
 }
 
 @layer components {
@@ -74,18 +83,31 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-brand-green text-white font-semibold rounded-brand text-sm sm:text-base hover:bg-brand-green-hover transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98];
+    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-green to-brand-green-hover text-white font-semibold rounded-brand text-sm sm:text-base hover:shadow-[0_8px_20px_rgba(12,206,107,0.3)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-brand-surface-border text-brand-text font-semibold rounded-brand text-sm sm:text-base hover:border-brand-green hover:text-brand-green transition-all duration-300 active:scale-[0.98];
+    @apply inline-flex items-center justify-center px-6 py-3 border border-brand-surface-border text-brand-text font-semibold rounded-brand text-sm sm:text-base hover:border-brand-green hover:text-brand-green hover:bg-brand-green/5 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98];
   }
 
   .card {
-    @apply bg-white border border-brand-surface-border rounded-brand p-6 shadow-card hover:shadow-card-hover hover:border-brand-green/40 transition-all duration-300;
+    @apply bg-white border border-brand-surface-border rounded-brand p-8 shadow-card hover:shadow-card-hover hover:border-brand-green/40 transition-all duration-300 bg-gradient-to-b from-white to-brand-surface/50 relative overflow-hidden;
+  }
+
+  .card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none;
+  }
+
+  .card:hover::before {
+    @apply opacity-100;
   }
 
   .card-glow {
-    @apply card hover:shadow-lg;
+    @apply card hover:shadow-glow-lg border-brand-green/30 ring-1 ring-inset ring-brand-green/10;
+  }
+
+  .section-gradient {
+    @apply relative overflow-hidden bg-gradient-to-b from-transparent to-brand-surface border-t border-brand-surface-border/50;
   }
 }
