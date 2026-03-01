@@ -88,17 +88,15 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 NEXT_PUBLIC_SITE_URL=https://meandrobo.com.qa
 
 # Server-only (NEVER prefix with NEXT_PUBLIC_)
-FIREBASE_SERVICE_ACCOUNT_KEY_B64=
-GEMINI_API_KEY=
+MB_FIREBASE_ADMIN_JSON={"project_id": "..."}
+MB_GEMINI_API_KEY=
 ```
 
 ### Encoding the Firebase Service Account Key
 
 ```bash
-cat service-account.json | base64 -w0
+# Save your exact downloaded JSON into a single line string to put in MB_FIREBASE_ADMIN_JSON.
 ```
-
-Paste the output into `FIREBASE_SERVICE_ACCOUNT_KEY_B64`.
 
 ## Hostinger Deployment
 
@@ -153,7 +151,7 @@ The site includes an AI chat assistant (Scope: services & booking only).
 Add to your `.env.local`:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
+MB_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 > ⚠️ Never prefix with `NEXT_PUBLIC_` — the key must stay server-side only.
@@ -161,7 +159,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ### 3. Configure on Hostinger
 
 1. In Hostinger panel → Websites → Node.js → Environment Variables
-2. Add `GEMINI_API_KEY` with your key value
+2. Add `MB_GEMINI_API_KEY` with your key value
 3. Rebuild/restart the app
 
 ### 4. Test

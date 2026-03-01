@@ -1,10 +1,13 @@
 export const runtime = "nodejs";
 
 export async function GET() {
+    const hasFirebaseAdmin = !!process.env.MB_FIREBASE_ADMIN_JSON ||
+        !!(process.env.MB_FIREBASE_PROJECT_ID && process.env.MB_FIREBASE_CLIENT_EMAIL && process.env.MB_FIREBASE_PRIVATE_KEY);
+
     return Response.json({
         ok: true,
         timestamp: new Date().toISOString(),
-        firebase: !!(process.env.FB_ADMIN_PROJECT_ID && process.env.FB_ADMIN_CLIENT_EMAIL && process.env.FB_ADMIN_PRIVATE_KEY),
-        gemini: !!process.env.GEMINI_API_KEY,
+        firebase: hasFirebaseAdmin,
+        gemini: !!process.env.MB_GEMINI_API_KEY,
     });
 }

@@ -114,9 +114,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Check API key (server-only)
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.MB_GEMINI_API_KEY;
     if (!apiKey) {
-        console.error("[chat] GEMINI_API_KEY is not set");
+        console.error("[chat] MB_GEMINI_API_KEY is not set");
         return NextResponse.json({ error: "Chat is temporarily unavailable." }, { status: 503 });
     }
 

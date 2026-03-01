@@ -16,15 +16,32 @@ function getAdminApp(): App | null {
         return app;
     }
 
-    const projectId = process.env.FIREBASE_PROJECT_ID || process.env.FB_ADMIN_PROJECT_ID;
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL || process.env.FB_ADMIN_CLIENT_EMAIL;
-    let privateKey = process.env.FIREBASE_PRIVATE_KEY || process.env.FB_ADMIN_PRIVATE_KEY;
-    privateKey = privateKey?.replace(/\\n/g, "\n");
+    let projectId, clientEmail, privateKey;
+
+    // Try to load consolidated JSON secret first (preferred)
+    const adminJsonStr = process.env.MB_FIREBASE_ADMIN_JSON;
+
+    if (adminJsonStr) {
+        try {
+            const adminJson = JSON.parse(adminJsonStr);
+            projectId = adminJson.project_id;
+            clientEmail = adminJson.client_email;
+            privateKey = adminJson.private_key;
+        } catch (e) {
+            console.error("[firebase-admin] Failed to parse MB_FIREBASE_ADMIN_JSON.");
+        }
+    } else {
+        // Fallback for local dev if they still use individual MB_ vars
+        projectId = process.env.MB_FIREBASE_PROJECT_ID;
+        clientEmail = process.env.MB_FIREBASE_CLIENT_EMAIL;
+        let pk = process.env.MB_FIREBASE_PRIVATE_KEY;
+        privateKey = pk ? pk.replace(/\\n/g, "\n") : undefined;
+    }
 
     if (!projectId || !clientEmail || !privateKey) {
         console.warn(
-            "[firebase-admin] Missing env vars (FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY). " +
-            "Admin features disabled."
+            "[firebase-admin] Missing env vars for Admin SDK (MB_FIREBASE_ADMIN_JSON). " +
+            "Admin features disabled gracefully."
         );
         return null;
     }

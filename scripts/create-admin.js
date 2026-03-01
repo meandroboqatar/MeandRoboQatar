@@ -10,9 +10,22 @@ async function main() {
     const email = "meandroboqatar@gmail.com";
     const password = "zfSG;;7uE1.3";
 
-    let projectId = process.env.FIREBASE_PROJECT_ID;
-    let clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-    let privateKeyRaw = process.env.FIREBASE_PRIVATE_KEY;
+    let projectId = process.env.MB_FIREBASE_PROJECT_ID;
+    let clientEmail = process.env.MB_FIREBASE_CLIENT_EMAIL;
+    let privateKeyRaw = process.env.MB_FIREBASE_PRIVATE_KEY;
+
+    // Check consolidated JSON secret first (preferred)
+    const adminJsonStr = process.env.MB_FIREBASE_ADMIN_JSON;
+    if (adminJsonStr) {
+        try {
+            const adminJson = JSON.parse(adminJsonStr);
+            projectId = adminJson.project_id;
+            clientEmail = adminJson.client_email;
+            privateKeyRaw = adminJson.private_key;
+        } catch (e) {
+            console.error("Failed to parse MB_FIREBASE_ADMIN_JSON in env payload.");
+        }
+    }
 
     // Fallback exactly to a raw JSON file if ENV parsing keeps breaking
     const saPath = path.resolve(process.cwd(), 'service-account.json');
@@ -25,7 +38,7 @@ async function main() {
     }
 
     if (!projectId || !clientEmail || !privateKeyRaw) {
-        console.error("❌ Missing FIREBASE credentials in .env.local or service-account.json");
+        console.error("❌ Missing FIREBASE credentials in .env.local (MB_FIREBASE_ADMIN_JSON) or service-account.json");
         process.exit(1);
     }
 
