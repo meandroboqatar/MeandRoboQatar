@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { buildSystemPrompt } from "@/lib/chat/knowledge";
+import { getAdminDb } from "@/lib/firebase-admin";
+import { retrieveTopFaqs } from "@/lib/chat/faq-rag";
+import { FieldValue } from "firebase-admin/firestore";
 
 export const runtime = "nodejs";
 
@@ -32,6 +35,8 @@ interface HistoryEntry {
 interface ValidatedPayload {
     message: string;
     page?: string;
+    stage?: string;
+    sessionId?: string;
     history: HistoryEntry[];
 }
 
@@ -44,6 +49,8 @@ function validatePayload(body: unknown): ValidatedPayload | null {
     if (!message || message.length > MAX_MESSAGE_LENGTH) return null;
 
     const page = typeof obj.page === "string" ? obj.page.trim() : undefined;
+    const stage = typeof obj.stage === "string" ? obj.stage : "collect_email";
+    const sessionId = typeof obj.sessionId === "string" ? obj.sessionId : "unknown";
 
     // Validate optional history array
     const history: HistoryEntry[] = [];
@@ -69,7 +76,7 @@ function validatePayload(body: unknown): ValidatedPayload | null {
         }
     }
 
-    return { message, page, history };
+    return { message, page, stage, sessionId, history };
 }
 
 /* ── POST Handler ─────────────────────────────────────────────────── */
@@ -113,8 +120,73 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Chat is temporarily unavailable." }, { status: 503 });
     }
 
+    // ── FIRESTORE & GATE LOGIC ──────────────────────────────────────
+    const db = getAdminDb();
+    const chatRef = db?.collection("leads_chat").doc(payload.sessionId || "unknown");
+
+    if (chatRef) {
+        await chatRef.set({
+            lastUpdated: FieldValue.serverTimestamp(),
+            page: payload.page || "unknown",
+            ip: ip,
+        }, { merge: true });
+
+        await chatRef.collection("messages").add({
+            role: "user",
+            content: payload.message,
+            timestamp: FieldValue.serverTimestamp(),
+        });
+    }
+
+    if (payload.stage === "collect_email") {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(payload.message)) {
+            if (chatRef) await chatRef.set({ email: payload.message }, { merge: true });
+            const reply = "Great, thanks! Please provide your Qatar phone number to continue.";
+            if (chatRef) {
+                await chatRef.collection("messages").add({
+                    role: "assistant",
+                    content: reply,
+                    timestamp: FieldValue.serverTimestamp(),
+                });
+            }
+            return NextResponse.json({ reply, stage: "collect_phone" });
+        } else {
+            const reply = "Before I can assist, please share a valid email address.";
+            return NextResponse.json({ reply, stage: "collect_email" });
+        }
+    }
+
+    if (payload.stage === "collect_phone") {
+        const phone = payload.message.replace(/\s+/g, "");
+        const isQatar = phone.match(/^(?:\+?974)?\d{8}$/);
+
+        if (isQatar) {
+            if (chatRef) await chatRef.set({ phone: phone }, { merge: true });
+            const reply = "Perfect, thank you! How can I help you today?";
+            if (chatRef) {
+                await chatRef.collection("messages").add({
+                    role: "assistant",
+                    content: reply,
+                    timestamp: FieldValue.serverTimestamp(),
+                });
+            }
+            return NextResponse.json({ reply, stage: "ready" });
+        } else {
+            const reply = "Please provide a valid Qatar phone number (e.g. +974 77558819 or 8 local digits).";
+            return NextResponse.json({ reply, stage: "collect_phone" });
+        }
+    }
+
     // Build messages
-    const systemPrompt = buildSystemPrompt();
+    const topFaqs = retrieveTopFaqs(payload.message, 2).map((r) => ({
+        question: r.faq.question,
+        answer: r.faq.answer,
+        service: r.serviceName,
+        id: r.faq.id,
+    }));
+
+    const systemPrompt = buildSystemPrompt(topFaqs);
     const userMessage = payload.page
         ? `[User is on page: ${payload.page}] ${payload.message}`
         : payload.message;
@@ -211,7 +283,15 @@ export async function POST(request: NextRequest) {
             data?.candidates?.[0]?.content?.parts?.[0]?.text ||
             "I'm having trouble responding right now. Please contact us directly at +974 77558819.";
 
-        return NextResponse.json({ reply });
+        if (chatRef) {
+            await chatRef.collection("messages").add({
+                role: "assistant",
+                content: reply,
+                timestamp: FieldValue.serverTimestamp(),
+            });
+        }
+
+        return NextResponse.json({ reply, stage: "ready" });
     } catch (err) {
         console.error("[chat] Unexpected error:", err);
         return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });

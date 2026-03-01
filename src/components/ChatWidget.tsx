@@ -14,6 +14,8 @@ interface Message {
 
 /* ── Constants ────────────────────────────────────────────────────── */
 const STORAGE_KEY = "meandrobo_chat_history_v1";
+const STAGE_KEY = "meandrobo_chat_stage_v1";
+const SESSION_KEY = "meandrobo_session_id_v1";
 const MAX_LOCAL_MESSAGES = 20;
 const MAX_API_HISTORY = 10;
 
@@ -108,6 +110,8 @@ export function ChatWidget() {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [hydrated, setHydrated] = useState(false);
+    const [chatStage, setChatStage] = useState<"collect_email" | "collect_phone" | "ready">("collect_email");
+    const [sessionId, setSessionId] = useState<string>("");
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const pathname = usePathname();
@@ -118,6 +122,17 @@ export function ChatWidget() {
         if (saved && saved.length > 0) {
             setMessages(saved);
         }
+
+        const savedStage = localStorage.getItem(STAGE_KEY) as any;
+        if (savedStage) setChatStage(savedStage);
+
+        let savedSession = localStorage.getItem(SESSION_KEY);
+        if (!savedSession) {
+            savedSession = uid() + uid();
+            localStorage.setItem(SESSION_KEY, savedSession);
+        }
+        setSessionId(savedSession);
+
         setHydrated(true);
     }, []);
 
@@ -144,8 +159,13 @@ export function ChatWidget() {
 
     const clearChat = useCallback(() => {
         setMessages([WELCOME_MESSAGE]);
+        setChatStage("collect_email");
+        const newSession = uid() + uid();
+        setSessionId(newSession);
         try {
             localStorage.removeItem(STORAGE_KEY);
+            localStorage.setItem(STAGE_KEY, "collect_email");
+            localStorage.setItem(SESSION_KEY, newSession);
         } catch {
             // no-op
         }
@@ -172,6 +192,8 @@ export function ChatWidget() {
                     message: trimmed,
                     page: pathname,
                     history,
+                    stage: chatStage,
+                    sessionId: sessionId,
                 }),
             });
 
@@ -179,6 +201,13 @@ export function ChatWidget() {
 
             if (!res.ok) {
                 throw new Error(data.error || "Something went wrong");
+            }
+
+            if (data.stage && data.stage !== chatStage) {
+                setChatStage(data.stage);
+                try {
+                    localStorage.setItem(STAGE_KEY, data.stage);
+                } catch { }
             }
 
             const reply = data.reply as string;
@@ -221,8 +250,8 @@ export function ChatWidget() {
         }
     }
 
-    // Show quick replies only when just the welcome message exists
-    const showQuickReplies = messages.length <= 1 && !loading;
+    // Show quick replies only when not loading, and hide them if we are in the middle of lead capture.
+    const showQuickReplies = messages.length <= 1 && !loading && chatStage !== "collect_phone";
 
     return (
         <>

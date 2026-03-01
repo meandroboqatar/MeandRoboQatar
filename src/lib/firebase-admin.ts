@@ -16,13 +16,13 @@ function getAdminApp(): App | null {
         return app;
     }
 
-    const projectId = process.env.FIREBASE_PROJECT_ID;
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+    const projectId = process.env.FB_ADMIN_PROJECT_ID;
+    const clientEmail = process.env.FB_ADMIN_CLIENT_EMAIL;
+    const privateKey = process.env.FB_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n");
 
     if (!projectId || !clientEmail || !privateKey) {
         console.warn(
-            "[firebase-admin] Missing env vars (FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY). " +
+            "[firebase-admin] Missing env vars (FB_ADMIN_PROJECT_ID, FB_ADMIN_CLIENT_EMAIL, FB_ADMIN_PRIVATE_KEY). " +
             "Admin features disabled."
         );
         return null;

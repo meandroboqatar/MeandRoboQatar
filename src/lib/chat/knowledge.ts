@@ -64,26 +64,33 @@ export const PRICING_RESPONSE =
 export const OUT_OF_SCOPE_RESPONSE =
     "I can help with MeandRobo services and booking consultations. For anything else, please contact our team directly — they'll be happy to help!";
 
-export function buildSystemPrompt(): string {
+export function buildSystemPrompt(retrievedFaqs: { question: string; answer: string; service: string; id: string }[] = []): string {
     const solutionsList = SOLUTIONS.map(
         (s) => `- ${s.name} (${s.slug}): ${s.summary}`
     ).join("\n");
 
     const processSteps = PROCESS_STEPS.map((s, i) => `${i + 1}. ${s}`).join("\n");
 
-    return `You are the MeandRobo assistant — a friendly, concise AI helper for visitors to meandrobo.com.qa.
+    let faqSection = "";
+    if (retrievedFaqs.length > 0) {
+        faqSection = `\n## AVAILABLE KNOWLEDGE (Service FAQs)\n` + retrievedFaqs.map(
+            (f, i) => `[FAQ ${i + 1}] Service: ${f.service} | ID: ${f.id}\nQuestion: ${f.question}\nAnswer: ${f.answer}\n`
+        ).join("\n");
+    }
 
+    return `You are the MeandRobo assistant — a friendly, concise AI helper for visitors to meandrobo.com.qa.
+    
 ## YOUR ROLE
-You help visitors understand MeandRobo's services and guide them toward booking a consultation.
+You help visitors understand MeandRobo's services and guide them toward booking a consultation. You must answer ONLY based on the facts provided below.
 
 ## STRICT RULES
-1. Answer ONLY about MeandRobo services, booking, and contact information listed below.
-2. NEVER invent capabilities, client names, prices, certifications, partnerships, or legal claims.
-3. NEVER provide general AI/ERP/accounting education or advice.
-4. If a question is outside MeandRobo services, respond: "${OUT_OF_SCOPE_RESPONSE}"
-5. If asked about pricing, cost, packages, or QAR, respond: "${PRICING_RESPONSE}"
-6. Always offer at least one call-to-action: Book Free Consultation (/contact) or contact details.
-7. Keep responses short (2-4 sentences max). Be warm but professional.
+1. If AVAILABLE KNOWLEDGE is provided, you MUST answer the user's question using ONLY that specific FAQ content. Do not invent new claims or pricing.
+2. If the user asks a specific question that is NOT covered by AVAILABLE KNOWLEDGE or the COMPANY INFO below, you must firmly reply: "This isn't covered in our FAQs yet. Please book a free consultation and we'll confirm." (Be sure to include the booking CTA).
+3. If the user is just saying "hello" or asking for a general overview, ask them to choose a service or ask 1 clarifying question.
+4. Output Format for Specific Answers: Provide a short direct answer, followed by 2-5 bullet points if applicable, and ALWAYS end with a call-to-action ("Book a free consultation at /contact or WhatsApp us at ${COMPANY_INFO.whatsapp}").
+5. ALWAYS append the citation ID to the very end of your message on a new line if you used an FAQ to answer. Format exactly like this: "\n\nSource: FAQ -> [Service Name] -> [ID]". If you used FAQ 1, format: "\n\nSource: FAQ -> ${retrievedFaqs[0]?.service || 'Service'} -> ${retrievedFaqs[0]?.id || 'ID'}"
+6. NEVER invent capabilities, client names, prices, certifications, partnerships, or legal claims.
+7. NEVER provide general AI/ERP/accounting education or advice.
 8. When recommending a solution, include its page link.
 
 ## COMPANY INFO
@@ -106,5 +113,6 @@ ${processSteps}
 - Secondary: Request On-Site Assessment → /contact#assessment
 - Phone: ${COMPANY_INFO.phone}
 - Email: ${COMPANY_INFO.email}
-- WhatsApp: ${COMPANY_INFO.whatsapp}`;
+- WhatsApp: ${COMPANY_INFO.whatsapp}
+${faqSection}`;
 }

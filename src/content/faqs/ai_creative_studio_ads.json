@@ -1,0 +1,29 @@
+{
+    "serviceId": "ai_creative_studio_ads",
+    "serviceName": "AI Creative Studio & Ads",
+    "faqs": [
+        {
+            "id": "creative-what-is",
+            "question": "What is the AI Creative Studio?",
+            "answer": "MeandRobo provides an AI-powered creative engine that instantly generates high-converting ad creatives, product lifestyle photos, marketing videos, and voiceovers. This significantly reduces the cost of traditional photography and video shoots.",
+            "tags": [
+                "creative",
+                "ads",
+                "videos",
+                "images",
+                "studio"
+            ]
+        },
+        {
+            "id": "creative-cost",
+            "question": "Is it cheaper than a traditional marketing agency?",
+            "answer": "Yes. Because our engine uses generative AI models rather than expensive staging, equipment, and manual editing, we're able to deliver superior visual assets in hours instead of weeks, for a fraction of the cost.",
+            "tags": [
+                "cost",
+                "agency",
+                "pricing",
+                "cheaper"
+            ]
+        }
+    ]
+}

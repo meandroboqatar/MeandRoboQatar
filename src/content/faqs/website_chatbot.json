@@ -1,0 +1,38 @@
+{
+    "serviceId": "website_chatbot",
+    "serviceName": "AI Website Chatbot",
+    "faqs": [
+        {
+            "id": "chatbot-what-does-it-do",
+            "question": "What does the AI Website Chatbot do?",
+            "answer": "Our AI Chatbot acts as an automated customer service rep. It sits on your website, answers visitor questions 24/7 using your business's custom knowledge base, captures leads (emails and phone numbers), and helps convert visitors into customers.",
+            "tags": [
+                "what",
+                "features",
+                "capabilities"
+            ]
+        },
+        {
+            "id": "chatbot-setup-time",
+            "question": "How long does implementation take?",
+            "answer": "Configuring the AI models and embedding the chatbot onto your website usually takes 3 to 7 days, depending on how much knowledge (PDFs, URLs, FAQs) needs to be trained and integrated.",
+            "tags": [
+                "setup",
+                "timeline",
+                "implementation",
+                "time"
+            ]
+        },
+        {
+            "id": "chatbot-leads",
+            "question": "Can it capture leads and integrate with a CRM?",
+            "answer": "Absolutely. The chatbot is programmed to mandate capturing emails and local Qatar phone numbers before providing support, and it logs all chat transcripts directly into your unified Firebase database and admin portal.",
+            "tags": [
+                "leads",
+                "email",
+                "phone",
+                "crm"
+            ]
+        }
+    ]
+}
