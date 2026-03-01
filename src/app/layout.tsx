@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { HideOnAdmin } from "@/components/HideOnAdmin";
 
 import { ChatWidget } from "@/components/ChatWidget";
 import { JsonLd } from "@/components/JsonLd";
@@ -91,11 +92,14 @@ export default function RootLayout({
             <body className="font-sans bg-white text-brand-text min-h-screen flex flex-col">
                 <JsonLd data={organizationSchema} />
                 <JsonLd data={websiteSchema} />
-                <Navbar />
+                <HideOnAdmin>
+                    <Navbar />
+                </HideOnAdmin>
                 <main className="flex-1">{children}</main>
-                <Footer />
-                <ChatWidget />
-
+                <HideOnAdmin>
+                    <Footer />
+                    <ChatWidget />
+                </HideOnAdmin>
             </body>
         </html>
     );
