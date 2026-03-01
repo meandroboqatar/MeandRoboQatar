@@ -71,6 +71,20 @@ export function SolutionPage({ slug }: SolutionPageProps) {
         return variants[s] || "animate-float-complex";
     };
 
+    const getServiceImage = (s: string) => {
+        const images: Record<string, string> = {
+            "erp-pfp-qatar": "/images/services/erp-pfp-qatar.png",
+            "ai-website-chatbot-qatar": "/images/services/ai-website-chatbot-qatar.png",
+            "ai-customer-agent-qatar": "/images/services/ai-customer-agent-qatar.png",
+            "ai-social-media-manager-qatar": "/images/services/ai-social-media-manager-qatar.png",
+            "ai-creative-studio-qatar": "/images/services/ai-creative-studio-qatar.png",
+            "ai-call-center-agent-qatar": "/images/services/ai-call-center-agent-qatar.png",
+            "web-development-qatar": "/images/services/web-development-qatar.png",
+            "ai-business-plan-generator-qatar": "/images/services/ai-business-plan-generator-qatar.png",
+        };
+        return images[s] || "/images/robot-mascot-transparent.png";
+    };
+
     return (
         <>
             <JsonLd data={serviceSchema} />
@@ -79,8 +93,12 @@ export function SolutionPage({ slug }: SolutionPageProps) {
             <Hero
                 title={data.hero.title}
                 subtitle={data.hero.subtitle}
+                bullets={data.capabilities.slice(0, 3).map((c) => c.title)}
+                primaryCta={{ text: "Book Free Consultation", href: "/contact" }}
+                secondaryCta={{ text: "Talk to a human", href: "https://wa.me/97433898251" }}
                 showRobot={true}
                 animationVariant={getAnimationVariant(slug)}
+                customImage={getServiceImage(slug)}
             />
 
             {/* Direct Answer */}

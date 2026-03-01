@@ -50,6 +50,7 @@ const config: Config = {
                 "slide-up": "slideUp 0.6s ease-out forwards",
                 "pulse-glow": "pulseGlow 2s ease-in-out infinite",
                 float: "float 6s ease-in-out infinite",
+                "float-slow": "float 10s ease-in-out infinite",
                 "float-complex": "floatComplex 8s ease-in-out infinite",
                 "float-data": "floatData 4s ease-in-out infinite",
                 "float-chat": "floatChat 5s ease-in-out infinite",
