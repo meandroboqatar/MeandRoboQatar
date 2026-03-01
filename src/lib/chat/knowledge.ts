@@ -18,36 +18,14 @@ export const COMPANY_INFO = {
 };
 
 export const SOLUTIONS = [
-    {
-        name: "Next-Gen ERP & Personal Finance Planner",
-        slug: "/erp-pfp-qatar",
-        summary:
-            "Unified AI-powered business and personal finance management. Automates invoicing, inventory, expense tracking, and financial forecasting for Qatar SMEs.",
-    },
-    {
-        name: "AI Customer Agent",
-        slug: "/ai-customer-agent-qatar",
-        summary:
-            "24/7 multilingual customer support across WhatsApp, social media, and web. Handles FAQs, order tracking, and complaint resolution in Arabic and English.",
-    },
-    {
-        name: "AI Call Center Agent",
-        slug: "/ai-call-center-agent-qatar",
-        summary:
-            "Virtual receptionist that answers calls, books appointments, routes inquiries, and provides after-hours support — in Arabic and English.",
-    },
-    {
-        name: "AI Creative Studio",
-        slug: "/ai-creative-studio-qatar",
-        summary:
-            "Generate professional ad creatives, social media content, and marketing materials in seconds using AI — tailored for Qatar businesses.",
-    },
-    {
-        name: "AI Website & Chatbot",
-        slug: "/ai-website-chatbot-qatar",
-        summary:
-            "Turn website visitors into qualified leads with intelligent chatbot conversations, automated follow-ups, and integrated CRM.",
-    },
+    { name: "AI ERP Solutions", slug: "/erp-pfp-qatar", summary: "Inventory • Sales • Purchasing • Expenses • Invoicing • Reporting • Finance automation" },
+    { name: "AI Website & Chatbot", slug: "/ai-website-chatbot-qatar", summary: "Website chat assistant • FAQ grounding • Lead capture • Booking routing" },
+    { name: "AI Customer Agent", slug: "/ai-customer-agent-qatar", summary: "Auto-reply to Instagram/Facebook/WhatsApp inquiries • DM/comment handling • escalation to human" },
+    { name: "AI Social Media Manager", slug: "/ai-social-media-manager-qatar", summary: "Content calendar • captions • hashtags • scheduled posting • brand consistency" },
+    { name: "AI Creative Studio", slug: "/ai-creative-studio-qatar", summary: "Promotional images • ad creatives • short videos • campaign assets for Qatar SMEs" },
+    { name: "AI Call Center Agent", slug: "/ai-call-center-agent-qatar", summary: "Call routing • scripted support flows • lead qualification • call summaries" },
+    { name: "Web Development", slug: "/web-development-qatar", summary: "High-converting websites • landing pages • integrations • performance + SEO" },
+    { name: "AI Business Plan Generator", slug: "/ai-business-plan-generator-qatar", summary: "AI-generated business plan drafts • pitch support • industry-based templates" },
 ];
 
 export const PROCESS_STEPS = [
@@ -60,17 +38,17 @@ export const PROCESS_STEPS = [
 
 export const WELCOME_MENU = `Perfect, thank you! Welcome to MeandRobo. How can I help you today?
 
-We serve startups + SMEs in Qatar, and we specialize in restaurants, coffee shops, and gold businesses.
+We serve startups + SMEs in Qatar, and we specialize in restaurants, coffee shops, and service businesses.
 
 **Our Core Services:**
-1. Next-Gen ERP & Bookkeeping
-2. Website Development
-3. AI Website Chatbot
-4. AI Social Media Manager
-5. AI Customer Agent
-6. AI Creative Studio
-7. Dhareeba Support
-8. Business Plan Generator
+1. **AI ERP Solutions:** Inventory • Sales • Purchasing • Expenses • Invoicing • Reporting • Finance automation
+2. **AI Website & Chatbot:** Website chat assistant • FAQ grounding • Lead capture • Booking routing
+3. **AI Customer Agent:** Auto-reply to Instagram/Facebook/WhatsApp inquiries • DM/comment handling • escalation to human
+4. **AI Social Media Manager:** Content calendar • captions • hashtags • scheduled posting • brand consistency
+5. **AI Creative Studio:** Promotional images • ad creatives • short videos • campaign assets for Qatar SMEs
+6. **AI Call Center Agent:** Call routing • scripted support flows • lead qualification • call summaries
+7. **Web Development:** High-converting websites • landing pages • integrations • performance + SEO
+8. **AI Business Plan Generator:** AI-generated business plan drafts • pitch support • industry-based templates
 
 Would you like to learn more about a specific service, or book a free consultation?`;
 
@@ -90,8 +68,17 @@ DO NOT explain AI services, just provide the booking paths and ask the questions
 export const INTENT_PROMPT_SERVICES = `
 ## SERVICES INTENT DETECTED
 The user asked a broad question about what services we offer.
-YOU MUST output a formatted numbered list of our services, summarizing them briefly using the AVAILABLE KNOWLEDGE provided below.
-Then, ask the user: "Which one of these are you interested in?"
+YOU MUST output exactly the 8 Core Services in a formatted list:
+1. **AI ERP Solutions:** Inventory • Sales • Purchasing • Expenses • Invoicing • Reporting • Finance automation
+2. **AI Website & Chatbot:** Website chat assistant • FAQ grounding • Lead capture • Booking routing
+3. **AI Customer Agent:** Auto-reply to Instagram/Facebook/WhatsApp inquiries • DM/comment handling • escalation to human
+4. **AI Social Media Manager:** Content calendar • captions • hashtags • scheduled posting • brand consistency
+5. **AI Creative Studio:** Promotional images • ad creatives • short videos • campaign assets for Qatar SMEs
+6. **AI Call Center Agent:** Call routing • scripted support flows • lead qualification • call summaries
+7. **Web Development:** High-converting websites • landing pages • integrations • performance + SEO
+8. **AI Business Plan Generator:** AI-generated business plan drafts • pitch support • industry-based templates
+
+Then, ask the user: "Which service are you interested in?"
 `;
 
 export const PRICING_RESPONSE =

@@ -1,19 +1,19 @@
 {
-    "serviceId": "ai_social_media_manager",
-    "serviceName": "AI Social Media Manager",
+    "serviceId": "ai_call_center_agent",
+    "serviceName": "AI Call Center Agent",
     "faqs": [
         {
             "id": "service_overview",
-            "question": "What is the AI Social Media Manager service?",
-            "answer": "It manages your content calendar, writes captions, generates hashtags, schedules posting, and ensures brand consistency.",
+            "question": "What is the AI Call Center Agent service?",
+            "answer": "It handles call routing via voice AI, provides scripted support flows, qualifies leads, and logs call summaries.",
             "tags": [
                 "overview",
-                "ai social media manager"
+                "ai call center agent"
             ]
         },
         {
             "id": "who_is_it_for",
-            "question": "Who is AI Social Media Manager built for?",
+            "question": "Who is AI Call Center Agent built for?",
             "answer": "It is specifically built for Qatar startups and SMEs looking to automate their daily operations.",
             "tags": [
                 "who",
@@ -34,7 +34,7 @@
         {
             "id": "what_you_get_deliverables",
             "question": "What are the deliverables?",
-            "answer": "You will receive a complete, ready-to-use AI Social Media Manager system configured to your specific business needs.",
+            "answer": "You will receive a complete, ready-to-use AI Call Center Agent system configured to your specific business needs.",
             "tags": [
                 "deliverables",
                 "what do i get"

@@ -1,19 +1,19 @@
 {
-    "serviceId": "ai_social_media_manager",
-    "serviceName": "AI Social Media Manager",
+    "serviceId": "web_development",
+    "serviceName": "Web Development",
     "faqs": [
         {
             "id": "service_overview",
-            "question": "What is the AI Social Media Manager service?",
-            "answer": "It manages your content calendar, writes captions, generates hashtags, schedules posting, and ensures brand consistency.",
+            "question": "What is the Web Development service?",
+            "answer": "We build high-converting websites and landing pages with rich integrations, optimized performance, and SEO.",
             "tags": [
                 "overview",
-                "ai social media manager"
+                "web development"
             ]
         },
         {
             "id": "who_is_it_for",
-            "question": "Who is AI Social Media Manager built for?",
+            "question": "Who is Web Development built for?",
             "answer": "It is specifically built for Qatar startups and SMEs looking to automate their daily operations.",
             "tags": [
                 "who",
@@ -34,7 +34,7 @@
         {
             "id": "what_you_get_deliverables",
             "question": "What are the deliverables?",
-            "answer": "You will receive a complete, ready-to-use AI Social Media Manager system configured to your specific business needs.",
+            "answer": "You will receive a complete, ready-to-use Web Development system configured to your specific business needs.",
             "tags": [
                 "deliverables",
                 "what do i get"

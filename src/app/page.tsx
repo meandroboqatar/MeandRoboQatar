@@ -21,11 +21,14 @@ const painPoints = [
 ];
 
 const solutionsList = [
-    { icon: "📊", title: "Next-Gen ERP & PFP", description: "Unified business and personal finance management with AI insights.", href: "/erp-pfp-qatar" },
-    { icon: "🤖", title: "AI Customer Agent", description: "24/7 multilingual customer support across WhatsApp, social media, and web.", href: "/ai-customer-agent-qatar" },
-    { icon: "📞", title: "AI Call Center Agent", description: "Virtual receptionist that answers calls, books appointments, and routes intelligently.", href: "/ai-call-center-agent-qatar" },
-    { icon: "🎨", title: "AI Creative Studio", description: "Generate professional ad creatives and social media content in seconds.", href: "/ai-creative-studio-qatar" },
-    { icon: "💬", title: "AI Website & Chatbot", description: "Turn website visitors into qualified leads with intelligent chatbot conversations.", href: "/ai-website-chatbot-qatar" },
+    { icon: "📊", title: "AI ERP Solutions", description: "Inventory • Sales • Purchasing • Expenses • Invoicing • Reporting • Finance automation", href: "/erp-pfp-qatar" },
+    { icon: "💬", title: "AI Website & Chatbot", description: "Website chat assistant • FAQ grounding • Lead capture • Booking routing", href: "/ai-website-chatbot-qatar" },
+    { icon: "🤖", title: "AI Customer Agent", description: "Auto-reply to Instagram/Facebook/WhatsApp inquiries • DM/comment handling • escalation to human", href: "/ai-customer-agent-qatar" },
+    { icon: "📱", title: "AI Social Media Manager", description: "Content calendar • captions • hashtags • scheduled posting • brand consistency", href: "/ai-social-media-manager-qatar" },
+    { icon: "🎨", title: "AI Creative Studio", description: "Promotional images • ad creatives • short videos • campaign assets for Qatar SMEs", href: "/ai-creative-studio-qatar" },
+    { icon: "📞", title: "AI Call Center Agent", description: "Call routing • scripted support flows • lead qualification • call summaries", href: "/ai-call-center-agent-qatar" },
+    { icon: "💻", title: "Web Development", description: "High-converting websites • landing pages • integrations • performance + SEO", href: "/web-development-qatar" },
+    { icon: "📝", title: "AI Business Plan Generator", description: "AI-generated business plan drafts • pitch support • industry-based templates", href: "/ai-business-plan-generator-qatar" },
 ];
 
 export default function HomePage() {
@@ -58,8 +61,8 @@ export default function HomePage() {
             <Section>
                 <SectionHeader
                     eyebrow="Our Intelligence Suite"
-                    title="Five AI-powered solutions for every business need"
-                    description="Each solution is deployed on-site in Qatar and tailored to your industry."
+                    title="Eight AI-powered solutions for every business need"
+                    description="Each solution is tailored to your industry to supercharge your daily operations in Qatar."
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {solutionsList.map((solution) => (

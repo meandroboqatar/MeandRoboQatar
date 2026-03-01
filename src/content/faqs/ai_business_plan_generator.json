@@ -1,19 +1,19 @@
 {
-    "serviceId": "ai_social_media_manager",
-    "serviceName": "AI Social Media Manager",
+    "serviceId": "ai_business_plan_generator",
+    "serviceName": "AI Business Plan Generator",
     "faqs": [
         {
             "id": "service_overview",
-            "question": "What is the AI Social Media Manager service?",
-            "answer": "It manages your content calendar, writes captions, generates hashtags, schedules posting, and ensures brand consistency.",
+            "question": "What is the AI Business Plan Generator service?",
+            "answer": "It produces AI-generated business plan drafts, pitch support, and industry-based templates.",
             "tags": [
                 "overview",
-                "ai social media manager"
+                "ai business plan generator"
             ]
         },
         {
             "id": "who_is_it_for",
-            "question": "Who is AI Social Media Manager built for?",
+            "question": "Who is AI Business Plan Generator built for?",
             "answer": "It is specifically built for Qatar startups and SMEs looking to automate their daily operations.",
             "tags": [
                 "who",
@@ -34,7 +34,7 @@
         {
             "id": "what_you_get_deliverables",
             "question": "What are the deliverables?",
-            "answer": "You will receive a complete, ready-to-use AI Social Media Manager system configured to your specific business needs.",
+            "answer": "You will receive a complete, ready-to-use AI Business Plan Generator system configured to your specific business needs.",
             "tags": [
                 "deliverables",
                 "what do i get"

@@ -28,10 +28,14 @@ const INITIAL_QUICK_REPLIES = [
 const READY_QUICK_REPLIES = [
     { label: "See services", message: "See services" },
     { label: "Book free consultation", message: "I want to book a consultation" },
-    { label: "ERP & Bookkeeping", message: "Tell me about the ERP & Bookkeeping service" },
-    { label: "Website + Chatbot", message: "Tell me about Website and Chatbot services" },
-    { label: "Marketing + AI Agents", message: "Tell me about Marketing and AI Agents" },
-    { label: "Talk to human", message: "I want to talk to a human" },
+    { label: "Talk to a human", message: "I want to talk to a human" },
+    { label: "AI ERP Solutions", message: "Tell me about AI ERP Solutions" },
+    { label: "AI Website & Chatbot", message: "Tell me about AI Website & Chatbot" },
+    { label: "AI Customer Agent", message: "Tell me about AI Customer Agent" },
+    { label: "AI Creative Studio", message: "Tell me about AI Creative Studio" },
+    { label: "AI Call Center Agent", message: "Tell me about AI Call Center Agent" },
+    { label: "Web Development", message: "Tell me about Web Development" },
+    { label: "AI Business Plan Generator", message: "Tell me about AI Business Plan Generator" },
 ];
 
 const WELCOME_MESSAGE: Message = {

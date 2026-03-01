@@ -38,21 +38,21 @@ export const solutions: Record<string, SolutionData> = {
     "erp-pfp-qatar": {
         slug: "erp-pfp-qatar",
         metadata: meta(
-            "ERP & PFP for Qatar Entrepreneurs",
-            "Next-gen ERP and personal financial planning for Qatar startups. Track revenue, expenses, and growth in one AI-powered platform.",
+            "AI ERP Solutions for Qatar SMEs",
+            "Next-gen AI ERP solutions for Qatar startups. Track inventory, sales, purchasing, and finance in one AI-powered platform.",
             "erp-pfp-qatar"
         ),
         hero: {
-            title: "ERP & Personal Financial Planner for Qatar Entrepreneurs",
+            title: "AI ERP Solutions for Qatar Businesses",
             subtitle:
-                "Manage your business finances, inventory, and personal wealth in a single AI-powered platform built for Qatar SMEs.",
+                "Manage your inventory, sales, purchasing, expenses, and invoicing in a single AI-powered platform built for Qatar SMEs.",
         },
         directAnswer:
-            "MeandRobo's ERP & PFP solution combines enterprise resource planning with personal financial tracking, purpose-built for entrepreneurs and startups in Qatar. It automates invoicing, expense tracking, inventory management, and personal wealth monitoring — all in one dashboard. Available with on-site setup in Doha and remote support.",
+            "MeandRobo's AI ERP Solutions automate business operations, designed specifically for SMEs in Qatar. It automates invoicing, expense tracking, inventory management, and financial reporting — all in one AI-driven dashboard. Available with on-site setup in Doha and remote support.",
         whatItIs: {
-            title: "What is ERP + PFP?",
+            title: "What is AI ERP?",
             description:
-                "A unified platform that merges business ERP (invoicing, inventory, expenses, payroll) with a Personal Financial Planner (PFP) — so entrepreneurs can track both their company finances and personal wealth in one place. AI-powered insights help you make smarter decisions faster.",
+                "A unified AI-driven operational platform that merges inventory, sales, purchasing, expenses, and invoicing. Our AI-powered insights help you automate finance and make smarter decisions faster to accelerate growth.",
         },
         howItWorks: [
             { number: 1, title: "Discovery", description: "We assess your current tools, workflows, and financial structure during an on-site visit in Qatar." },
@@ -163,7 +163,7 @@ export const solutions: Record<string, SolutionData> = {
         relatedSolutions: [
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
             { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
-            { title: "ERP & PFP", href: "/erp-pfp-qatar" },
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
         ],
     },
@@ -229,7 +229,7 @@ export const solutions: Record<string, SolutionData> = {
         relatedSolutions: [
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
             { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
-            { title: "ERP & PFP", href: "/erp-pfp-qatar" },
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
         ],
     },
@@ -296,7 +296,7 @@ export const solutions: Record<string, SolutionData> = {
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
             { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
-            { title: "ERP & PFP", href: "/erp-pfp-qatar" },
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
         ],
     },
     "ai-website-chatbot-qatar": {
@@ -362,7 +362,132 @@ export const solutions: Record<string, SolutionData> = {
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
-            { title: "ERP & PFP", href: "/erp-pfp-qatar" },
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
+        ],
+    },
+    "ai-social-media-manager-qatar": {
+        slug: "ai-social-media-manager-qatar",
+        metadata: meta(
+            "AI Social Media Manager",
+            "Content calendar, captions, hashtags, and scheduled posting.",
+            "ai-social-media-manager-qatar"
+        ),
+        hero: {
+            title: "AI Social Media Manager",
+            subtitle: "Content calendar • captions • hashtags • scheduled posting • brand consistency",
+        },
+        directAnswer: "AI Social Media Manager creates content calendars, writes captions with hashtags, and automates posting across all your platforms to ensure brand consistency and engagement.",
+        whatItIs: { title: "What is the AI Social Media Manager?", description: "An automated assistant that handles your daily content generation and scheduling." },
+        howItWorks: [
+            { number: 1, title: "Configuration", description: "Set your brand voice and platform preferences." },
+            { number: 2, title: "Generation", description: "AI drafts captions and suggests hashtags." },
+            { number: 3, title: "Review", description: "Approve the generated weekly calendar." },
+            { number: 4, title: "Automation", description: "Posts are published automatically at peak audience times." },
+        ],
+        capabilities: [
+            { icon: "📅", title: "Content Calendar", description: "Plan weeks in advance." },
+            { icon: "✍️", title: "Smart Captions", description: "Engaging, SEO-optimized copy." },
+            { icon: "hashtags", title: "Trending Hashtags", description: "Maximize discoverability." },
+            { icon: "🌐", title: "Multilingual", description: "Arabic and English support." },
+        ],
+        outcomes: [
+            { metric: "10x", label: "Faster content creation" },
+            { metric: "100%", label: "Consistency" },
+        ],
+        useCases: [
+            { industry: "Retail", description: "Daily product highlights and promotions." },
+            { industry: "Service", description: "Educational posts and portfolio updates." },
+        ],
+        implementation: "Set up in 2 days with your brand guidelines.",
+        faqs: [
+            { question: "Can I approve posts before they go out?", answer: "Yes, you have full control over the content calendar." }
+        ],
+        relatedSolutions: [
+            { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
+            { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
+        ],
+    },
+    "web-development-qatar": {
+        slug: "web-development-qatar",
+        metadata: meta(
+            "Web Development in Qatar",
+            "High-converting websites, landing pages, and web apps.",
+            "web-development-qatar"
+        ),
+        hero: {
+            title: "Web Development",
+            subtitle: "High-converting websites • landing pages • integrations • performance + SEO",
+        },
+        directAnswer: "We build high-converting, AI-optimized websites and landing pages with seamless integrations, top-tier performance, and built-in SEO to act as the foundation for your digital growth.",
+        whatItIs: { title: "Custom Web Development", description: "Fast, modern web architectures tailored to convert visitors into leads." },
+        howItWorks: [
+            { number: 1, title: "Discovery", description: "Understand your target conversion metrics." },
+            { number: 2, title: "Design", description: "Wireframe a modern, responsive layout." },
+            { number: 3, title: "Build", description: "Develop using cutting-edge frameworks like Next.js." },
+            { number: 4, title: "Launch", description: "Deploy with comprehensive SEO metadata." },
+        ],
+        capabilities: [
+            { icon: "⚡", title: "High Performance", description: "Sub-second load times." },
+            { icon: "🔍", title: "SEO Optimized", description: "Built for search engine visibility." },
+            { icon: "📱", title: "Responsive", description: "Perfect on mobile, tablet, and desktop." },
+            { icon: "🔗", title: "Integrations", description: "Connects with your CRM and AI tools." },
+        ],
+        outcomes: [
+            { metric: "100", label: "Performance Score" },
+            { metric: "3x", label: "Conversion Rate" },
+        ],
+        useCases: [
+            { industry: "B2B", description: "Corporate sites with lead generation funnels." },
+            { industry: "E-commerce", description: "Fast product catalogs with integrated ordering." },
+        ],
+        implementation: "Launched in 2-4 weeks depending on complexity.",
+        faqs: [
+            { question: "Do you provide hosting?", answer: "Yes, we host on secure, scalable cloud infrastructure." }
+        ],
+        relatedSolutions: [
+            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
+        ],
+    },
+    "ai-business-plan-generator-qatar": {
+        slug: "ai-business-plan-generator-qatar",
+        metadata: meta(
+            "AI Business Plan Generator",
+            "AI-generated business plan drafts, pitch support, and templates.",
+            "ai-business-plan-generator-qatar"
+        ),
+        hero: {
+            title: "AI Business Plan Generator",
+            subtitle: "AI-generated business plan drafts • pitch support • industry-based templates",
+        },
+        directAnswer: "Our AI Business Plan Generator helps entrepreneurs quickly draft comprehensive business plans, create pitch decks, and utilize industry-specific templates to secure funding and guide growth.",
+        whatItIs: { title: "What is the AI Business Plan Generator?", description: "A tool that converts your raw ideas and financial projections into professional, investor-ready documents." },
+        howItWorks: [
+            { number: 1, title: "Input", description: "Provide your business idea, target market, and initial numbers." },
+            { number: 2, title: "AI Drafting", description: "The system generates structured sections and executive summaries." },
+            { number: 3, title: "Refinement", description: "Review and edit the draft with our provided templates." },
+            { number: 4, title: "Export", description: "Download ready-to-present PDFs and pitch decks." },
+        ],
+        capabilities: [
+            { icon: "📝", title: "Smart Drafting", description: "Generates clear, professional narratives." },
+            { icon: "📊", title: "Financials", description: "Formats your projections perfectly." },
+            { icon: "🎯", title: "Pitch Support", description: "Extracts key points for investor presentations." },
+            { icon: "📑", title: "Templates", description: "Industry-specific structures for Qatar." },
+        ],
+        outcomes: [
+            { metric: "Days", label: "Saved in drafting" },
+            { metric: "100%", label: "Structure" },
+        ],
+        useCases: [
+            { industry: "Startups", description: "Drafting an initial business plan for seed funding." },
+            { industry: "SMEs", description: "Creating expansion strategy documents for bank loans." },
+        ],
+        implementation: "Instant access to the generation tools.",
+        faqs: [
+            { question: "Is this suitable for Qatari banks?", answer: "Yes, our templates align with local institutional requirements." }
+        ],
+        relatedSolutions: [
+            { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
         ],
     },
 };

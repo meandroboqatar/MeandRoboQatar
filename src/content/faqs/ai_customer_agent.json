@@ -1,40 +1,63 @@
 {
     "serviceId": "ai_customer_agent",
-    "serviceName": "AI Customer Agent (Social & WhatsApp)",
+    "serviceName": "AI Customer Agent",
     "faqs": [
         {
-            "id": "customer-agent-service-overview",
-            "question": "Give me an overview of the AI Customer Agent service.",
-            "answer": "Our AI Customer Agent provides 24/7 multilingual support across WhatsApp, social media, and your website. It handles FAQs, order tracking, and complaint resolution in both Arabic and English, instantly improving customer satisfaction.",
+            "id": "service_overview",
+            "question": "What is the AI Customer Agent service?",
+            "answer": "It auto-replies to Instagram, Facebook, and WhatsApp inquiries, handles DMs/comments, and escalates to humans.",
             "tags": [
-                "customer agent",
-                "support",
-                "whatsapp",
                 "overview",
-                "service_overview"
+                "ai customer agent"
             ]
         },
         {
-            "id": "agent-channels",
-            "question": "Which social platforms can the AI Agent handle?",
-            "answer": "Our AI Customer Agents can be deployed on WhatsApp, Instagram DMs, FaceBook Messenger, and even integrated via standard SMS, responding to Qatari customers in both Arabic and English.",
+            "id": "who_is_it_for",
+            "question": "Who is AI Customer Agent built for?",
+            "answer": "It is specifically built for Qatar startups and SMEs looking to automate their daily operations.",
             "tags": [
-                "whatsapp",
-                "instagram",
-                "facebook",
-                "channels",
-                "social media"
+                "who",
+                "target audience",
+                "sme"
             ]
         },
         {
-            "id": "agent-language",
-            "question": "Does it speak Arabic and English?",
-            "answer": "Yes. Our AI models are optimized to fluently speak both English and Arabic, effortlessly switching languages based on the customer's initial message to provide a deeply localized experience for the GCC market.",
+            "id": "implementation_timeline",
+            "question": "How long does implementation take?",
+            "answer": "Implementation typically takes 1 to 2 weeks, including on-site setup in Doha if required.",
             "tags": [
-                "arabic",
-                "english",
-                "bilingual",
-                "language"
+                "timeline",
+                "setup",
+                "how long"
+            ]
+        },
+        {
+            "id": "what_you_get_deliverables",
+            "question": "What are the deliverables?",
+            "answer": "You will receive a complete, ready-to-use AI Customer Agent system configured to your specific business needs.",
+            "tags": [
+                "deliverables",
+                "what do i get"
+            ]
+        },
+        {
+            "id": "support_and_maintenance",
+            "question": "What support is included?",
+            "answer": "We provide comprehensive training for your team and ongoing maintenance to ensure optimal performance.",
+            "tags": [
+                "support",
+                "maintenance",
+                "help"
+            ]
+        },
+        {
+            "id": "pricing_model",
+            "question": "What is the pricing model?",
+            "answer": "Pricing is dependent on your exact scope and requirements. Please book a free consultation for a detailed quote.",
+            "tags": [
+                "price",
+                "cost",
+                "pricing"
             ]
         }
     ]

@@ -42,16 +42,8 @@ async function main() {
         process.exit(1);
     }
 
-    // Completely reconstruct the PEM key to fix ANY corrupt whitespace or DER errors
-    const b64 = privateKeyRaw
-        .replace(/-----BEGIN PRIVATE KEY-----/g, '')
-        .replace(/-----END PRIVATE KEY-----/g, '')
-        .replace(/\\n/g, '')
-        .replace(/\s+/g, '')
-        .replace(/"/g, '');
-
-    const chunked = b64.match(/.{1,64}/g).join('\n');
-    const privateKey = `-----BEGIN PRIVATE KEY-----\n${chunked}\n-----END PRIVATE KEY-----\n`;
+    // Safely format the key (handles both literal newlines and escaped newlines)
+    const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
 
     const app = initializeApp({
         credential: cert({

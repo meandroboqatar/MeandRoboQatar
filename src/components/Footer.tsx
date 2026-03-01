@@ -2,11 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const solutionLinks = [
-    { href: "/erp-pfp-qatar", label: "ERP & PFP" },
-    { href: "/ai-customer-agent-qatar", label: "AI Customer Agent" },
-    { href: "/ai-call-center-agent-qatar", label: "AI Call Center Agent" },
-    { href: "/ai-creative-studio-qatar", label: "AI Creative Studio" },
+    { href: "/erp-pfp-qatar", label: "AI ERP Solutions" },
     { href: "/ai-website-chatbot-qatar", label: "AI Website & Chatbot" },
+    { href: "/ai-customer-agent-qatar", label: "AI Customer Agent" },
+    { href: "/ai-social-media-manager-qatar", label: "AI Social Media Manager" },
+    { href: "/ai-creative-studio-qatar", label: "AI Creative Studio" },
+    { href: "/ai-call-center-agent-qatar", label: "AI Call Center Agent" },
+    { href: "/web-development-qatar", label: "Web Development" },
+    { href: "/ai-business-plan-generator-qatar", label: "AI Business Plan Generator" },
 ];
 
 const companyLinks = [

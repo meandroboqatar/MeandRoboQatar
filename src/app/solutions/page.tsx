@@ -7,40 +7,58 @@ import { LeadForm } from "@/components/LeadForm";
 export const metadata: Metadata = {
     title: "AI Solutions for Qatar SMEs",
     description:
-        "Explore MeandRobo's 5 AI-powered solutions: ERP, Customer Agent, Call Center, Creative Studio, and Website Chatbot — built for Qatar.",
+        "Explore MeandRobo's 8 AI-powered solutions including AI ERP, Chatbots, Customer Agents, Web Development, and more.",
     alternates: { canonical: "https://meandrobo.com.qa/solutions" },
 };
 
 const solutions = [
     {
         icon: "📊",
-        title: "Next-Gen ERP & PFP",
-        description: "Unified business and personal finance management with AI-powered insights. Track revenue, expenses, inventory, and personal wealth in one dashboard.",
+        title: "AI ERP Solutions",
+        description: "Inventory • Sales • Purchasing • Expenses • Invoicing • Reporting • Finance automation",
         href: "/erp-pfp-qatar",
-    },
-    {
-        icon: "🤖",
-        title: "AI Customer Agent",
-        description: "24/7 multilingual customer support across WhatsApp, Instagram DMs, Facebook Messenger, and your website. Automate 85% of inquiries.",
-        href: "/ai-customer-agent-qatar",
-    },
-    {
-        icon: "📞",
-        title: "AI Call Center Agent",
-        description: "A virtual receptionist that answers every call in Arabic and English, books appointments, routes intelligently, and never puts customers on hold.",
-        href: "/ai-call-center-agent-qatar",
-    },
-    {
-        icon: "🎨",
-        title: "AI Creative Studio",
-        description: "Generate professional ad creatives, social media graphics, and video content in seconds — trained on your brand, no design skills needed.",
-        href: "/ai-creative-studio-qatar",
     },
     {
         icon: "💬",
         title: "AI Website & Chatbot",
-        description: "Transform your website into a lead-generation machine with an AI chatbot that qualifies visitors, answers questions, and books meetings 24/7.",
+        description: "Website chat assistant • FAQ grounding • Lead capture • Booking routing",
         href: "/ai-website-chatbot-qatar",
+    },
+    {
+        icon: "🤖",
+        title: "AI Customer Agent",
+        description: "Auto-reply to Instagram/Facebook/WhatsApp inquiries • DM/comment handling • escalation to human",
+        href: "/ai-customer-agent-qatar",
+    },
+    {
+        icon: "📱",
+        title: "AI Social Media Manager",
+        description: "Content calendar • captions • hashtags • scheduled posting • brand consistency",
+        href: "/ai-social-media-manager-qatar",
+    },
+    {
+        icon: "🎨",
+        title: "AI Creative Studio",
+        description: "Promotional images • ad creatives • short videos • campaign assets for Qatar SMEs",
+        href: "/ai-creative-studio-qatar",
+    },
+    {
+        icon: "📞",
+        title: "AI Call Center Agent",
+        description: "Call routing • scripted support flows • lead qualification • call summaries",
+        href: "/ai-call-center-agent-qatar",
+    },
+    {
+        icon: "💻",
+        title: "Web Development",
+        description: "High-converting websites • landing pages • integrations • performance + SEO",
+        href: "/web-development-qatar",
+    },
+    {
+        icon: "📝",
+        title: "AI Business Plan Generator",
+        description: "AI-generated business plan drafts • pitch support • industry-based templates",
+        href: "/ai-business-plan-generator-qatar",
     },
 ];
 
@@ -51,7 +69,7 @@ export default function SolutionsPage() {
                 <SectionHeader
                     eyebrow="Our Solutions"
                     title="AI Solutions for Qatar Businesses"
-                    description="Five purpose-built AI solutions that automate operations, reduce costs, and accelerate growth for SMEs in Qatar. Each is deployed on-site in Doha with ongoing support."
+                    description="Eight purpose-built AI solutions that automate operations, reduce costs, and accelerate growth for SMEs in Qatar. Each is deployed on-site in Doha with ongoing support."
                 />
 
                 <p className="text-brand-muted text-center max-w-3xl mx-auto mb-12 -mt-8">
