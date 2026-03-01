@@ -61,12 +61,20 @@ body {
 }
 
 /* Premium Typography Enhancements */
-h1, h2, h3, h4, h5, h6 {
-  @apply tracking-tight font-extrabold;
-}
+@layer base {
 
-p {
-  @apply leading-relaxed;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-extrabold;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
 }
 
 @layer components {
@@ -83,7 +91,7 @@ p {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-green to-brand-green-hover text-white font-semibold rounded-brand text-sm sm:text-base hover:shadow-[0_8px_20px_rgba(12,206,107,0.3)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm active:scale-[0.98];
+    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-green to-brand-green-hover text-white font-semibold rounded-brand text-sm sm:text-base hover:shadow-btn-hover hover:-translate-y-0.5 transition-all duration-300 shadow-sm active:scale-[0.98];
   }
 
   .btn-secondary {

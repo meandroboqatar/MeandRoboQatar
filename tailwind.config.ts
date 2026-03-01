@@ -36,6 +36,7 @@ const config: Config = {
                 "glow-lg": "0 0 40px rgba(12,206,107,0.15)",
                 card: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
                 "card-hover": "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
+                "btn-hover": "0 8px 20px rgba(12,206,107,0.3)",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
