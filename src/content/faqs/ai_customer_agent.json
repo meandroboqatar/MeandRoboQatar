@@ -3,6 +3,18 @@
     "serviceName": "AI Customer Agent (Social & WhatsApp)",
     "faqs": [
         {
+            "id": "customer-agent-service-overview",
+            "question": "Give me an overview of the AI Customer Agent service.",
+            "answer": "Our AI Customer Agent provides 24/7 multilingual support across WhatsApp, social media, and your website. It handles FAQs, order tracking, and complaint resolution in both Arabic and English, instantly improving customer satisfaction.",
+            "tags": [
+                "customer agent",
+                "support",
+                "whatsapp",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "agent-channels",
             "question": "Which social platforms can the AI Agent handle?",
             "answer": "Our AI Customer Agents can be deployed on WhatsApp, Instagram DMs, FaceBook Messenger, and even integrated via standard SMS, responding to Qatari customers in both Arabic and English.",

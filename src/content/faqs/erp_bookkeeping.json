@@ -3,6 +3,17 @@
     "serviceName": "Next-Gen ERP & Bookkeeping",
     "faqs": [
         {
+            "id": "erp-service-overview",
+            "question": "Give me an overview of the Next-Gen ERP & Bookkeeping service.",
+            "answer": "MeandRobo provides an all-in-one AI-powered ERP tailored for Qatari SMEs. It unifies bookkeeping, invoicing, inventory tracking, and financial forecasting. Implementation typically takes 2-4 weeks. We offer subscription plans and handle full Dhareeba compliance.",
+            "tags": [
+                "erp",
+                "bookkeeping",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "erp-what-is",
             "question": "What is the MeandRobo Next-Gen ERP?",
             "answer": "Our ERP system is tailored for Qatari SMEs. It provides an all-in-one dashboard to track net worth, automate bookkeeping, generate AI-driven financial insights, manage operations, and connect to Qatar's Dhareeba portal.",

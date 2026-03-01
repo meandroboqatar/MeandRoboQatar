@@ -58,13 +58,52 @@ export const PROCESS_STEPS = [
     "Ongoing Optimization — We monitor performance and continuously improve.",
 ];
 
+export const WELCOME_MENU = `Perfect, thank you! Welcome to MeandRobo. How can I help you today?
+
+We serve startups + SMEs in Qatar, and we specialize in restaurants, coffee shops, and gold businesses.
+
+**Our Core Services:**
+1. Next-Gen ERP & Bookkeeping
+2. Website Development
+3. AI Website Chatbot
+4. AI Social Media Manager
+5. AI Customer Agent
+6. AI Creative Studio
+7. Dhareeba Support
+8. Business Plan Generator
+
+Would you like to learn more about a specific service, or book a free consultation?`;
+
+export const INTENT_PROMPT_BOOKING = `
+## BOOKING INTENT DETECTED
+The user wants to book a consultation, meet, or talk to a real human.
+YOU MUST output the following exact information:
+1. Provide the main contact form link: /contact
+2. Provide the WhatsApp link: ${COMPANY_INFO.whatsapp}
+3. Provide the official Email (${COMPANY_INFO.email}) and Phone (${COMPANY_INFO.phone}).
+4. Ask these 2 exact questions to route the lead:
+   - "Which service are you interested in?"
+   - "What is your preferred contact method: WhatsApp, Email, or Call?"
+DO NOT explain AI services, just provide the booking paths and ask the questions.
+`;
+
+export const INTENT_PROMPT_SERVICES = `
+## SERVICES INTENT DETECTED
+The user asked a broad question about what services we offer.
+YOU MUST output a formatted numbered list of our services, summarizing them briefly using the AVAILABLE KNOWLEDGE provided below.
+Then, ask the user: "Which one of these are you interested in?"
+`;
+
 export const PRICING_RESPONSE =
     "We don't display pricing online. Every business has unique needs, so pricing depends on your specific requirements. Book a free consultation and we'll propose a tailored plan with transparent pricing.";
 
 export const OUT_OF_SCOPE_RESPONSE =
     "I can help with MeandRobo services and booking consultations. For anything else, please contact our team directly — they'll be happy to help!";
 
-export function buildSystemPrompt(retrievedFaqs: { question: string; answer: string; service: string; id: string }[] = []): string {
+export function buildSystemPrompt(
+    retrievedFaqs: { question: string; answer: string; service: string; id: string }[] = [],
+    intent: "ask_services" | "book_consultation" | "unknown" = "unknown"
+): string {
     const solutionsList = SOLUTIONS.map(
         (s) => `- ${s.name} (${s.slug}): ${s.summary}`
     ).join("\n");
@@ -77,6 +116,10 @@ export function buildSystemPrompt(retrievedFaqs: { question: string; answer: str
             (f, i) => `[FAQ ${i + 1}] Service: ${f.service} | ID: ${f.id}\nQuestion: ${f.question}\nAnswer: ${f.answer}\n`
         ).join("\n");
     }
+
+    let intentSection = "";
+    if (intent === "book_consultation") intentSection = INTENT_PROMPT_BOOKING;
+    if (intent === "ask_services") intentSection = INTENT_PROMPT_SERVICES;
 
     return `You are the MeandRobo assistant — a friendly, concise AI helper for visitors to meandrobo.com.qa.
     
@@ -92,6 +135,8 @@ You help visitors understand MeandRobo's services and guide them toward booking 
 6. NEVER invent capabilities, client names, prices, certifications, partnerships, or legal claims.
 7. NEVER provide general AI/ERP/accounting education or advice.
 8. When recommending a solution, include its page link.
+9. MARKDOWN FORMATTING: You must render complete responses. NEVER output empty bullet points (e.g., "* "). Ensure all numbered lists and bullet points contain full, readable sentences.
+${intentSection}
 
 ## COMPANY INFO
 - Official Name: ${COMPANY_INFO.officialName}

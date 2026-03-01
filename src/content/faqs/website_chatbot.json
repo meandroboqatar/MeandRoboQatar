@@ -3,6 +3,17 @@
     "serviceName": "AI Website Chatbot",
     "faqs": [
         {
+            "id": "chatbot-service-overview",
+            "question": "Give me an overview of the AI Website Chatbot service.",
+            "answer": "Our AI Chatbots sit on your website 24/7 to answer visitor questions using your approved FAQs. Crucially, they act as lead-generation machines by mandating email and Qatar phone capture before answering, syncing directly to your CRM. Setup takes 3-7 days.",
+            "tags": [
+                "chatbot",
+                "website",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "chatbot-what-does-it-do",
             "question": "What does the AI Website Chatbot do?",
             "answer": "Our AI Chatbot acts as an automated customer service rep. It sits on your website, answers visitor questions 24/7 using your business's custom knowledge base, captures leads (emails and phone numbers), and helps convert visitors into customers.",

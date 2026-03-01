@@ -77,6 +77,34 @@ async function testChat() {
     data = await res.json();
     console.log("Reply:", data.reply);
     console.log("Stage:", data.stage, "(Expected: ready)");
+    console.log("--- TEST 6: Book Consultation Intent ---");
+    res = await fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: 'I want to talk to a human',
+            stage: 'ready',
+            sessionId,
+            history
+        })
+    });
+    data = await res.json();
+    console.log("Response Data (TEST 6):\n", data);
+    console.log("Reply:\n", data.reply);
+
+    console.log("\n--- TEST 7: Ask Services Intent ---");
+    res = await fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: 'what services do you offer?',
+            stage: 'ready',
+            sessionId,
+            history
+        })
+    });
+    data = await res.json();
+    console.log("Response Data:\n", data);
 }
 
 testChat().catch(console.error);

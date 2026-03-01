@@ -19,11 +19,19 @@ const SESSION_KEY = "meandrobo_session_id_v1";
 const MAX_LOCAL_MESSAGES = 20;
 const MAX_API_HISTORY = 10;
 
-const QUICK_REPLIES = [
+const INITIAL_QUICK_REPLIES = [
     { label: "Solutions", message: "What solutions does MeandRobo offer?" },
     { label: "Book Consultation", message: "I'd like to book a free consultation." },
     { label: "Request On-site", message: "I'd like to request an on-site assessment." },
-    { label: "Contact", message: "How can I contact MeandRobo?" },
+];
+
+const READY_QUICK_REPLIES = [
+    { label: "See services", message: "See services" },
+    { label: "Book free consultation", message: "I want to book a consultation" },
+    { label: "ERP & Bookkeeping", message: "Tell me about the ERP & Bookkeeping service" },
+    { label: "Website + Chatbot", message: "Tell me about Website and Chatbot services" },
+    { label: "Marketing + AI Agents", message: "Tell me about Marketing and AI Agents" },
+    { label: "Talk to human", message: "I want to talk to a human" },
 ];
 
 const WELCOME_MESSAGE: Message = {
@@ -53,6 +61,18 @@ function extractCtasFromReply(text: string): { label: string; href: string }[] {
 
 function cleanReply(text: string): string {
     return text.replace(/\[([^\]]+)\]\(\/[^\s)]+\)/g, "$1");
+}
+
+function parseMarkdown(text: string) {
+    // A lightweight parser to handle bold text `**text**` and prevent empty bullet crashes.
+    // Line breaks are natively handled by CSS whitespace-pre-wrap.
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+            return <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong>;
+        }
+        return <span key={i}>{part}</span>;
+    });
 }
 
 /* ── localStorage helpers ─────────────────────────────────────────── */
@@ -250,8 +270,10 @@ export function ChatWidget() {
         }
     }
 
-    // Show quick replies only when not loading, and hide them if we are in the middle of lead capture.
-    const showQuickReplies = messages.length <= 1 && !loading && chatStage !== "collect_phone";
+    // Show quick replies based on state
+    const isNewChat = messages.length <= 1 && chatStage !== "collect_phone" && chatStage !== "ready";
+    const currentQuickReplies = isNewChat ? INITIAL_QUICK_REPLIES : (chatStage === "ready" ? READY_QUICK_REPLIES : []);
+    const showQuickReplies = currentQuickReplies.length > 0 && !loading;
 
     return (
         <>
@@ -324,7 +346,7 @@ export function ChatWidget() {
                                         : "bg-brand-surface text-brand-text rounded-bl-md"
                                         }`}
                                 >
-                                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                                    <div className="whitespace-pre-wrap break-words">{parseMarkdown(msg.content)}</div>
                                     {msg.ctas && msg.ctas.length > 0 && (
                                         <div className="flex flex-wrap gap-2 mt-2">
                                             {msg.ctas.map((cta) => (
@@ -360,12 +382,12 @@ export function ChatWidget() {
 
                     {/* Quick Replies */}
                     {showQuickReplies && (
-                        <div className="px-4 pb-2 flex flex-wrap gap-2 shrink-0">
-                            {QUICK_REPLIES.map((qr) => (
+                        <div className="px-4 pb-2 flex flex-wrap gap-2 shrink-0 max-h-24 overflow-y-auto custom-scrollbar">
+                            {currentQuickReplies.map((qr) => (
                                 <button
                                     key={qr.label}
                                     onClick={() => sendMessage(qr.message)}
-                                    className="px-3 py-1.5 text-xs border border-brand-green/30 text-brand-green rounded-full hover:bg-brand-green/10 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green/40"
+                                    className="px-3 py-1.5 text-xs font-medium border border-brand-green/30 text-brand-green rounded-full hover:bg-brand-green hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-brand-green/40"
                                 >
                                     {qr.label}
                                 </button>

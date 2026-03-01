@@ -3,6 +3,17 @@
     "serviceName": "AI Social Media Manager (Agent)",
     "faqs": [
         {
+            "id": "smm-service-overview",
+            "question": "Give me an overview of the AI Social Media Manager service.",
+            "answer": "Our AI Social Media Manager automates your brand's presence across Instagram, Facebook, LinkedIn, TikTok, and X. It generates engaging captions, schedules posts, and proactively replies to comments and DMs, acting as a full-time digital marketing employee.",
+            "tags": [
+                "social media",
+                "manager",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "smm-how-it-works",
             "question": "How does the AI Social Media Manager work?",
             "answer": "Our AI system automatically generates engaging content, captions, and creative media based on your brand guidelines. It schedules posts across your social channels and proactively replies to comments and direct messages in real-time.",

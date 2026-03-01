@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { buildSystemPrompt } from "@/lib/chat/knowledge";
+import { buildSystemPrompt, WELCOME_MENU } from "@/lib/chat/knowledge";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { retrieveTopFaqs } from "@/lib/chat/faq-rag";
 import { FieldValue } from "firebase-admin/firestore";
@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 /* ── Rate Limiter (reuses same pattern as /api/leads) ─────────────── */
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT = 10; // requests per window
+const RATE_LIMIT = 100; // requests per window
 const RATE_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 
 function isRateLimited(ip: string): boolean {
@@ -163,7 +163,10 @@ export async function POST(request: NextRequest) {
 
         if (isQatar) {
             if (chatRef) await chatRef.set({ phone: phone }, { merge: true });
-            const reply = "Perfect, thank you! How can I help you today?";
+
+            // Hardcoded Welcome Menu replacing generative fallback
+            const reply = WELCOME_MENU;
+
             if (chatRef) {
                 await chatRef.collection("messages").add({
                     role: "assistant",
@@ -178,22 +181,49 @@ export async function POST(request: NextRequest) {
         }
     }
 
+    // ── INTENT ROUTER ──────────────────────────────────────────────
+    let intent: "ask_services" | "book_consultation" | "unknown" = "unknown";
+    const userMsgLower = payload.message.toLowerCase();
+
+    // Booking Intent
+    if (
+        userMsgLower.includes("book") ||
+        userMsgLower.includes("consultation") ||
+        userMsgLower.includes("meeting") ||
+        userMsgLower.includes("human") ||
+        userMsgLower.includes("talk to someone") ||
+        userMsgLower.includes("real person")
+    ) {
+        intent = "book_consultation";
+    }
+    // Services Intent
+    else if (
+        userMsgLower.includes("what service") ||
+        userMsgLower.includes("do you offer") ||
+        userMsgLower.includes("what do you do") ||
+        userMsgLower.includes("what can you do") ||
+        (userMsgLower.includes("services") && userMsgLower.includes("menu")) ||
+        userMsgLower === "see services" // exact match from quick reply
+    ) {
+        intent = "ask_services";
+    }
+
     // Build messages
-    const topFaqs = retrieveTopFaqs(payload.message, 2).map((r) => ({
+    const topFaqs = retrieveTopFaqs(payload.message, 3).map((r) => ({
         question: r.faq.question,
         answer: r.faq.answer,
         service: r.serviceName,
         id: r.faq.id,
     }));
 
-    const systemPrompt = buildSystemPrompt(topFaqs);
+    const systemPrompt = buildSystemPrompt(topFaqs, intent);
     const userMessage = payload.page
         ? `[User is on page: ${payload.page}] ${payload.message}`
         : payload.message;
 
     // ── Model config ──────────────────────────────────────────────
-    const PRIMARY_MODEL = "gemini-flash-latest";
-    const FALLBACK_MODEL = "gemini-2.5-flash";
+    const PRIMARY_MODEL = "gemini-2.5-flash";
+    const FALLBACK_MODEL = "gemini-1.5-flash";
     const BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models";
 
     // Build multi-turn contents from history + current message
@@ -219,8 +249,8 @@ export async function POST(request: NextRequest) {
         },
         contents,
         generationConfig: {
-            temperature: 0.3,
-            maxOutputTokens: 400,
+            temperature: 0.5,
+            maxOutputTokens: 2000,
             topP: 0.8,
         },
         safetySettings: [
@@ -279,6 +309,11 @@ export async function POST(request: NextRequest) {
         }
 
         const data = await geminiResponse.json();
+        const finishReason = data?.candidates?.[0]?.finishReason;
+        if (finishReason !== "STOP") {
+            console.warn("[chat] Gemini finishReason:", finishReason, JSON.stringify(data));
+        }
+
         const reply =
             data?.candidates?.[0]?.content?.parts?.[0]?.text ||
             "I'm having trouble responding right now. Please contact us directly at +974 77558819.";

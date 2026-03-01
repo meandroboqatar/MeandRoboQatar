@@ -3,6 +3,19 @@
     "serviceName": "AI Creative Studio & Ads",
     "faqs": [
         {
+            "id": "creative-studio-service-overview",
+            "question": "Give me an overview of the AI Creative Studio & Ads service.",
+            "answer": "The AI Creative Studio generates professional, high-converting ad creatives, social media images, and marketing videos in seconds. Tailored for Qatar businesses, it ensures your brand stands out without massive design agency retainers.",
+            "tags": [
+                "creative studio",
+                "ads",
+                "images",
+                "videos",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "creative-what-is",
             "question": "What is the AI Creative Studio?",
             "answer": "MeandRobo provides an AI-powered creative engine that instantly generates high-converting ad creatives, product lifestyle photos, marketing videos, and voiceovers. This significantly reduces the cost of traditional photography and video shoots.",

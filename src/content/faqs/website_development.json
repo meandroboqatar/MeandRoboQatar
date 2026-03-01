@@ -3,6 +3,17 @@
     "serviceName": "Website Development",
     "faqs": [
         {
+            "id": "web-service-overview",
+            "question": "Give me an overview of the Website Development service.",
+            "answer": "MeandRobo builds blazing-fast, scalable web applications ranging from corporate portfolios to complex e-commerce and SaaS platforms. All websites include modern SEO, beautiful UI/UX, and take 1-8 weeks depending on complexity.",
+            "tags": [
+                "website",
+                "development",
+                "overview",
+                "service_overview"
+            ]
+        },
+        {
             "id": "web-dev-types",
             "question": "What types of websites do you build?",
             "answer": "We build fast, scalable, and beautifully designed web applications. This ranges from simple landing pages and corporate portfolios to complex e-commerce systems, internal admin dashboards, and custom SaaS platforms like real estate booking websites.",
