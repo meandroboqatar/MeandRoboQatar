@@ -1,5 +1,4 @@
 import { getAdminDb } from "@/lib/firebase-admin";
-import { blogPosts as _staticPosts } from "@/lib/blog-data";
 
 export interface BlogPost {
     slug: string;
@@ -15,21 +14,13 @@ export interface BlogPost {
     seoDescription: string;
 }
 
-// Strip metadata field from static posts (it uses Next Metadata type that's
-// incompatible with a plain Record). Metadata is now built in generateMetadata.
-const staticPosts: BlogPost[] = _staticPosts.map(({ slug, title, excerpt, date, readTime, content, relatedSolutions }) => ({
-    slug, title, excerpt, date, readTime, content, relatedSolutions,
-    tags: [], coverImageUrl: "", seoTitle: "", seoDescription: "",
-}));
-
 /**
- * Fetch published blog posts from Firestore.
- * Falls back to static blog-data.ts if Firestore is empty or unavailable.
+ * Fetch published blog posts strictly from Firestore.
  */
 export async function getPublishedPosts(): Promise<BlogPost[]> {
     try {
         const db = getAdminDb();
-        if (!db) return staticPosts;
+        if (!db) return [];
         const snapshot = await db
             .collection("posts")
             .where("status", "==", "published")
@@ -37,8 +28,7 @@ export async function getPublishedPosts(): Promise<BlogPost[]> {
             .get();
 
         if (snapshot.empty) {
-            // Graceful fallback to static data
-            return staticPosts;
+            return [];
         }
 
         return snapshot.docs.map((doc) => {
@@ -60,19 +50,18 @@ export async function getPublishedPosts(): Promise<BlogPost[]> {
             };
         });
     } catch (error) {
-        console.warn("[blog] Firestore fetch failed, using static data:", error);
-        return staticPosts;
+        console.error("[blog] Firestore fetch failed:", error);
+        return [];
     }
 }
 
 /**
  * Fetch a single published post by slug from Firestore.
- * Falls back to static blog-data.ts.
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     try {
         const db = getAdminDb();
-        if (!db) return staticPosts.find((p) => p.slug === slug) || null;
+        if (!db) return null;
         const snapshot = await db
             .collection("posts")
             .where("slug", "==", slug)
@@ -81,8 +70,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
             .get();
 
         if (snapshot.empty) {
-            // Fallback to static data
-            return staticPosts.find((p) => p.slug === slug) || null;
+            return null;
         }
 
         const doc = snapshot.docs[0];
@@ -103,8 +91,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
             seoDescription: data.seoDescription || "",
         };
     } catch (error) {
-        console.warn("[blog] Firestore slug fetch failed, using static data:", error);
-        return staticPosts.find((p) => p.slug === slug) || null;
+        console.error("[blog] Firestore slug fetch failed:", error);
+        return null;
     }
 }
 
@@ -114,7 +102,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function getAllPublishedSlugs(): Promise<string[]> {
     try {
         const db = getAdminDb();
-        if (!db) return staticPosts.map((p) => p.slug);
+        if (!db) return [];
         const snapshot = await db
             .collection("posts")
             .where("status", "==", "published")
@@ -122,11 +110,11 @@ export async function getAllPublishedSlugs(): Promise<string[]> {
             .get();
 
         if (snapshot.empty) {
-            return staticPosts.map((p) => p.slug);
+            return [];
         }
 
         return snapshot.docs.map((doc) => doc.data().slug);
     } catch {
-        return staticPosts.map((p) => p.slug);
+        return [];
     }
 }

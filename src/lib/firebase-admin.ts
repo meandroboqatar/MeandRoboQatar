@@ -26,7 +26,7 @@ function getAdminApp(): App | null {
             const adminJson = JSON.parse(adminJsonStr);
             projectId = adminJson.project_id;
             clientEmail = adminJson.client_email;
-            privateKey = adminJson.private_key;
+            privateKey = adminJson.private_key ? adminJson.private_key.replace(/\\n/g, '\n') : undefined;
         } catch (e) {
             console.error("[firebase-admin] Failed to parse MB_FIREBASE_ADMIN_JSON.");
         }
