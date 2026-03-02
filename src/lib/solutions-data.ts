@@ -98,7 +98,7 @@ export const solutions: Record<string, SolutionData> = {
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
-            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI Website Chatbot", href: "/ai-website-chatbot-qatar" },
         ],
     },
     "ai-customer-agent-qatar": {
@@ -162,7 +162,7 @@ export const solutions: Record<string, SolutionData> = {
         ],
         relatedSolutions: [
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
-            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI Website Chatbot", href: "/ai-website-chatbot-qatar" },
             { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
         ],
@@ -228,7 +228,7 @@ export const solutions: Record<string, SolutionData> = {
         ],
         relatedSolutions: [
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
-            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI Website Chatbot", href: "/ai-website-chatbot-qatar" },
             { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
             { title: "AI Creative Studio", href: "/ai-creative-studio-qatar" },
         ],
@@ -294,7 +294,7 @@ export const solutions: Record<string, SolutionData> = {
         ],
         relatedSolutions: [
             { title: "AI Customer Agent", href: "/ai-customer-agent-qatar" },
-            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI Website Chatbot", href: "/ai-website-chatbot-qatar" },
             { title: "AI Call Center Agent", href: "/ai-call-center-agent-qatar" },
             { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
         ],
@@ -302,27 +302,27 @@ export const solutions: Record<string, SolutionData> = {
     "ai-website-chatbot-qatar": {
         slug: "ai-website-chatbot-qatar",
         metadata: meta(
-            "AI Website & Chatbot in Qatar",
-            "Turn website visitors into qualified leads with MeandRobo's AI chatbot. Smart conversations, instant answers, seamless handoff.",
+            "AI Website Chatbot in Qatar",
+            "Turn your website traffic into qualified leads with MeandRobo's AI chatbot. Smart conversations, instant answers, seamless handoff, and lead qualification.",
             "ai-website-chatbot-qatar"
         ),
         hero: {
-            title: "AI Website & Chatbot for Qatar Businesses",
+            title: "AI Website Chatbot for Qatar Businesses",
             subtitle:
-                "Transform your website into a lead-generation machine with an AI chatbot that qualifies visitors, answers questions, and books meetings — 24/7.",
+                "Transform your current website into a lead-generation machine with an AI chatbot that qualifies visitors, answers questions, and books meetings — 24/7.",
         },
         directAnswer:
-            "MeandRobo's AI Website & Chatbot solution combines a modern, high-performance website with an integrated AI chatbot that converts visitors into qualified leads. The chatbot answers questions, qualifies prospects, and books meetings — all in Arabic and English, 24/7. Built specifically for Qatar SMEs with on-site deployment in Doha.",
+            "MeandRobo's AI Website Chatbot solution integrates a smart chat widget into your existing website to convert visitors into qualified leads. The chatbot answers questions using your knowledge base, qualifies prospects, routes leads to your CRM, and books meetings — all in Arabic and English, 24/7. Built specifically for Qatar SMEs.",
         whatItIs: {
-            title: "What is the AI Website & Chatbot?",
+            title: "What is the AI Website Chatbot?",
             description:
-                "A complete solution that pairs a conversion-optimized website with an intelligent chatbot. The chatbot engages visitors the moment they land on your site, answers their questions using your knowledge base, qualifies them as leads, and books meetings — turning passive browsers into active prospects.",
+                "An intelligent chat widget that seamlessly integrates onto your existing website. The chatbot proactively engages visitors the moment they land on your site, answers their questions using your knowledge base, qualifies them as leads, and books meetings — escalating to human agents via WhatsApp or email when needed.",
         },
         howItWorks: [
-            { number: 1, title: "Website Audit", description: "We assess your current website and identify conversion opportunities during an on-site visit in Qatar." },
-            { number: 2, title: "Chatbot Training", description: "We train the AI on your products, services, FAQs, and qualification criteria." },
-            { number: 3, title: "Integration", description: "Deploy the chatbot on your website with CRM integration and lead notification setup." },
-            { number: 4, title: "Optimize", description: "A/B test conversation flows, refine qualification criteria, and improve conversion rates over time." },
+            { number: 1, title: "Chatbot Training", description: "We train the AI on your products, services, FAQs, pricing, and qualification criteria." },
+            { number: 2, title: "Website Integration", description: "We deploy the smart chatbot widget seamlessly onto your existing website." },
+            { number: 3, title: "CRM & Escaplation", description: "Connect with your CRM to push leads automatically and configure WhatsApp/email escalation for human support." },
+            { number: 4, title: "Optimize", description: "Review chat transcripts, adjust conversation flows, and refine qualification criteria based on real analytics." },
         ],
         capabilities: [
             { icon: "💬", title: "Smart Chat Widget", description: "An unobtrusive chat widget that proactively engages visitors based on their behavior and page context." },
@@ -345,7 +345,7 @@ export const solutions: Record<string, SolutionData> = {
             { industry: "Rent-a-Car", description: "Qualify rental leads, check vehicle availability, process booking requests, and upsell insurance through chat." },
         ],
         implementation:
-            "Deployment takes 5–7 business days. We conduct an on-site website audit at your Qatar location, train the chatbot, integrate with your tools, and launch with a supervised pilot. Continuous optimization ensures your conversion rates keep improving.",
+            "Deployment takes 5–7 business days. We train the chatbot, seamlessly integrate it into your existing website, connect it with your CRM, and launch with a supervised pilot. Continuous optimization ensures your conversion rates keep improving.",
         faqs: [
             { question: "Does the chatbot work on my existing website?", answer: "Yes. We integrate the chatbot as a widget on your current website — no need to rebuild anything." },
             { question: "Can it qualify leads automatically?", answer: "Yes. The chatbot asks qualifying questions you define and scores leads based on their answers, routing hot leads to your team." },
@@ -410,21 +410,21 @@ export const solutions: Record<string, SolutionData> = {
     "web-development-qatar": {
         slug: "web-development-qatar",
         metadata: meta(
-            "Web Development in Qatar",
-            "High-converting websites, landing pages, and web apps.",
+            "AI Web Development in Qatar",
+            "High-converting AI-optimized websites, chatbot-ready architecture, and powerful AI integrations for Qatar businesses.",
             "web-development-qatar"
         ),
         hero: {
-            title: "Web Development",
-            subtitle: "High-converting websites • landing pages • integrations • performance + SEO",
+            title: "AI Web Development for Qatar Businesses",
+            subtitle: "AI-optimized builds • chatbot-ready architecture • performance + SEO • intelligent automation",
         },
-        directAnswer: "We build high-converting, AI-optimized websites and landing pages with seamless integrations, top-tier performance, and built-in SEO to act as the foundation for your digital growth.",
-        whatItIs: { title: "Custom Web Development", description: "Fast, modern web architectures tailored to convert visitors into leads." },
+        directAnswer: "We build high-converting, AI-optimized websites with chatbot-ready architecture, seamless integrations, top-tier performance, and built-in SEO. Our AI Web Development services provide advanced features like forms automation, lead routing, and content automation to act as the intelligent foundation for your digital growth.",
+        whatItIs: { title: "AI Web Development", description: "Fast, modern web architectures designed with AI-first capabilities, tailored to convert visitors into engaged leads through intelligent automation." },
         howItWorks: [
-            { number: 1, title: "Discovery", description: "Understand your target conversion metrics." },
-            { number: 2, title: "Design", description: "Wireframe a modern, responsive layout." },
-            { number: 3, title: "Build", description: "Develop using cutting-edge frameworks like Next.js." },
-            { number: 4, title: "Launch", description: "Deploy with comprehensive SEO metadata." },
+            { number: 1, title: "Discovery", description: "Understand your target conversion metrics and map out your AI integration needs." },
+            { number: 2, title: "Design", description: "Wireframe a modern, responsive layout optimized for AI chatbot integration." },
+            { number: 3, title: "Build", description: "Develop using cutting-edge frameworks with built-in forms automation and lead routing." },
+            { number: 4, title: "Launch", description: "Deploy with comprehensive SEO metadata and AI performance tools enabled." },
         ],
         capabilities: [
             { icon: "⚡", title: "High Performance", description: "Sub-second load times." },
@@ -445,7 +445,7 @@ export const solutions: Record<string, SolutionData> = {
             { question: "Do you provide hosting?", answer: "Yes, we host on secure, scalable cloud infrastructure." }
         ],
         relatedSolutions: [
-            { title: "AI Website & Chatbot", href: "/ai-website-chatbot-qatar" },
+            { title: "AI Website Chatbot", href: "/ai-website-chatbot-qatar" },
             { title: "AI ERP Solutions", href: "/erp-pfp-qatar" },
         ],
     },
