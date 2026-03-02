@@ -126,10 +126,10 @@ export function Footer() {
                         © {new Date().getFullYear()} MEANDROBO ARTIFICIAL INTELLIGENCE SOLUTIONS. All rights reserved.
                     </p>
                     <div className="flex gap-6">
-                        <Link href="/contact" className="text-brand-muted hover:text-brand-green text-xs transition-colors">
+                        <Link href="/privacy-policy" className="text-brand-muted hover:text-brand-green text-xs transition-colors">
                             Privacy Policy
                         </Link>
-                        <Link href="/contact" className="text-brand-muted hover:text-brand-green text-xs transition-colors">
+                        <Link href="/terms-of-service" className="text-brand-muted hover:text-brand-green text-xs transition-colors">
                             Terms of Service
                         </Link>
                     </div>
