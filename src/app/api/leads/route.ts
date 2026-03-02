@@ -111,6 +111,11 @@ export async function POST(request: NextRequest) {
         }
         await db.collection("leads").add({
             ...sanitized,
+            source: sanitized.sourcePage?.includes("consultation")
+                ? "consultation-form"
+                : sanitized.sourcePage?.includes("chatbot")
+                    ? "chatbot"
+                    : "contact-form",
             createdAt: FieldValue.serverTimestamp(),
             userAgent: request.headers.get("user-agent") || "",
             ip,
